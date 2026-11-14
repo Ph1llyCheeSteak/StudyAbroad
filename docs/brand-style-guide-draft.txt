@@ -6,7 +6,7 @@ TRVLR — WORKING STYLE GUIDE & DESIGN REQUIREMENTS
 Draft for Maggie and the Study Abroad team | November 14, 2026
 
 STATUS
-Maggie approved the five palette study colors on November 14, 2026 for continued design work. The rest of this guide remains a draft. TRVLR is a working name.
+Maggie approved the five palette study colors and selected the Fredoka and Outfit typography pairing on November 14, 2026 for continued design work. The rest of this guide remains a draft. TRVLR is a working name.
 
 APPROVED DESIGN WORKFLOW
 When Maggie approves a design, save the approved source files and any export assets in the Study Abroad project folder so she can sync them with GitHub after the software installation is complete. Keep editable source alongside exports, use descriptive filenames and preserve earlier versions when useful. Do not treat draft designs as approved. The GitHub repository is Ph1llyCheeSteak/StudyAbroad; follow the team's branch and review process for synchronization.
@@ -31,7 +31,7 @@ GRADIENT
 The current downloadable study uses deep teal #194F59 → travel teal #236A75 → ocean blue #398BA1 → muted green #7BA18C. Use as a full-bleed hero, banner or accent; retain sufficient contrast for any text placed over it. This is a working option, not a final approved brand decision.
 
 TYPOGRAPHY & UI
-Use a friendly, contemporary sans-serif with strong, rounded headlines and readable body text. Manrope and DM Sans from the initial mockup are working examples. Use generous spacing, rounded cards, clear labels, expressive short headings and warm conversational language. Make layouts mobile-first. Use legible contrast, visible keyboard focus and labels that do not rely on color alone.
+Use Fredoka for large headings and Outfit for navigation, buttons, and body text. These are existing Google Fonts, paired for a playful but polished feel. See docs/design/font-hybrid-preview.html for the visual example; it loads the fonts from Google Fonts. Use generous spacing, rounded cards, clear labels, expressive short headings and warm conversational language. Make layouts mobile-first. Use legible contrast, visible keyboard focus and labels that do not rely on color alone.
 
 IMAGERY & MOTIFS
 Feature student portraits and candid travel moments when licensed or supplied imagery becomes available. Use recognizable but restrained visual cues: landmark outlines, city skylines, coastlines, ocean waves, mountains, tickets, maps and handwritten travel notes. Tie graphics to a real destination or travel activity rather than using decorative generic globes. Favor varied card sizes and editorial compositions over a grid of identical dashboard widgets. Mockup illustrations and example people/places should be labeled as sample content.

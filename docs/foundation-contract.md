@@ -1,6 +1,6 @@
 # Rove demo foundation (proposed, 2026-11-14)
 
-This static HTML/CSS/JavaScript prototype uses ES modules and requires no build or package installation. From the repository root run `python -m http.server 8000` and open http://localhost:8000. Vercel can serve the root directly.
+This static HTML/CSS/JavaScript prototype uses ES modules and requires no build or package installation. From the repository root run `python -m http.server 8000` and open http://localhost:8000. Cloudflare Pages serves the root directly from `main`; see `project-setup.md` for local feature and integration testing.
 
 The demo journey is Explore → city board → recommendation → save to the sample Rove → view saved place. Crew contains fictional profiles; messaging and real connections are not implemented. Map selection is represented by city cards until a map is built.
 

@@ -50,3 +50,6 @@ body:has(.explore-globe) .dot{color:var(--brown)}
 .bottom-nav{grid-template-rows:minmax(0,1fr)}
 .bottom-nav .compass-link{min-height:0}
 .compass-icon{flex:0 0 64px}
+
+/* Keep the shared header consistent across all sections. */
+.top,body:has(.explore-globe) .top{background:#194f59;color:#f3e9dc;border-color:#398ba1}

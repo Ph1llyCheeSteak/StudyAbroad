@@ -112,3 +112,10 @@ body:has(#globe-view:not([hidden])){overflow:hidden}
 @media (prefers-reduced-motion:reduce){.globe-frame{transition:none}}
 
 #globe-view .globe-stage{max-width:none}
+
+/* Only the current destination is highlighted; account pages have no active tab. */
+.bottom-nav a,body:has(.explore-globe) .bottom-nav a{color:#70847d;border:0}
+.bottom-nav a.active,body:has(.explore-globe) .bottom-nav a.active{color:#194f59;border:0}
+.bottom-nav a.active:not(.compass-link) svg{background:#dcebe2;border-radius:50%;padding:5px;width:32px;height:32px}
+.bottom-nav .compass-icon{background:#dce6df;color:#637b73;box-shadow:none}
+.bottom-nav .compass-link.active .compass-icon{background:#194f59;color:#fff;box-shadow:0 4px 12px #123b402e}

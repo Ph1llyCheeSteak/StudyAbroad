@@ -11,7 +11,6 @@ export function mountGlobe(cities,onSelect){
  let countryLabels=[];
  const clampZoom=z=>Math.max(1,Math.min(MAX_ZOOM,z));
  const center=()=>[-rotation[0],-rotation[1]];
- const beginExploring=()=>document.querySelector('#globe-view')?.classList.add('has-started');
  // Match a finger or mouse movement to the distance it travels on the map.
  // Longitude needs extra adjustment as meridians converge toward the poles.
  function dragRotation(start,dx,dy,atZoom){
@@ -22,7 +21,7 @@ export function mountGlobe(cities,onSelect){
  }
  function zoomSensitivity(atZoom){return .002/(1+.28*Math.log2(atZoom))}
  function draw(){
-  projection.rotate(rotation).scale(322*zoom);ctx.clearRect(0,0,700,700);stage.classList.toggle('is-zoomed',zoom>1.03);
+  projection.rotate(rotation).scale(322*zoom);ctx.clearRect(0,0,700,700);stage.classList.toggle('is-zoomed',zoom>1.03);document.querySelector('#globe-view').classList.toggle('globe-at-rest',zoom<=1.001);
   ctx.beginPath();path({type:'Sphere'});ctx.fillStyle='#398ba1';ctx.fill();
   ctx.beginPath();path(graticule);ctx.strokeStyle='rgba(169,211,211,.20)';ctx.lineWidth=.7;ctx.stroke();
   if(land){
@@ -46,8 +45,8 @@ export function mountGlobe(cities,onSelect){
   function step(now){let t=Math.min(1,(now-t0)/650),e=t*t*(3-2*t);rotation=[start[0]+delta*e,start[1]+(target[1]-start[1])*e,0];zoom=startZoom+(targetZoom-startZoom)*e;draw();if(t<1)frame=requestAnimationFrame(step);else if(done)done()}
   frame=requestAnimationFrame(step);
  }
- function select(c){if(!c||!coords[c.id])return;beginExploring();clearTimeout(settleTimer);chooser.hidden=true;document.querySelector('#find-city').setAttribute('aria-expanded','false');status.textContent='Opening '+c.name+'…';animate(coords[c.id],Math.max(zoom,14),()=>onSelect(c))}
- function focusCountry(item){if(!item)return;beginExploring();clearTimeout(settleTimer);focusPending=null;status.textContent='Zoom closer to see available city guides.';animate(item.point,Math.max(zoom,5))}
+ function select(c){if(!c||!coords[c.id])return;clearTimeout(settleTimer);chooser.hidden=true;document.querySelector('#find-city').setAttribute('aria-expanded','false');status.textContent='Opening '+c.name+'…';animate(coords[c.id],Math.max(zoom,14),()=>onSelect(c))}
+ function focusCountry(item){if(!item)return;clearTimeout(settleTimer);focusPending=null;status.textContent='Zoom closer to see available city guides.';animate(item.point,Math.max(zoom,5))}
  function contains(g,p){
   if(!g)return false;const ring=r=>{let hit=false;for(let i=0,j=r.length-1;i<r.length;j=i++){let [x,y]=r[i],[xx,yy]=r[j];if(((y>p[1])!==(yy>p[1]))&&p[0]<(xx-x)*(p[1]-y)/(yy-y)+x)hit=!hit}return hit};
   const polys=g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:[];return polys.some(poly=>ring(poly[0])&&!poly.slice(1).some(ring));
@@ -74,10 +73,9 @@ export function mountGlobe(cities,onSelect){
  const search=document.querySelector('#find-city'),options=[...chooser.querySelectorAll('[data-city]')],empty=chooser.querySelector('.city-search-empty');
  function updateSearch(){const q=search.value.trim().toLocaleLowerCase();let count=0;options.forEach(b=>{const show=!q||b.textContent.toLocaleLowerCase().includes(q);b.hidden=!show;if(show)count++});empty.hidden=count>0;chooser.hidden=false;search.setAttribute('aria-expanded','true')}
  function closeSearch(){chooser.hidden=true;search.setAttribute('aria-expanded','false')}
- search.addEventListener('focus',()=>{beginExploring();updateSearch()});search.addEventListener('input',updateSearch);
+ search.addEventListener('focus',()=>{updateSearch()});search.addEventListener('input',updateSearch);
  search.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();search.blur()}else if(e.key==='ArrowDown'){e.preventDefault();if(chooser.hidden)updateSearch();options.find(b=>!b.hidden)?.focus()}else if(e.key==='Enter'){const first=options.find(b=>!b.hidden);if(first){e.preventDefault();first.click()}}});
  options.forEach((b,i)=>{b.onclick=()=>{search.value='';select(cities.find(c=>c.id===b.dataset.city))};b.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();search.focus();closeSearch()}else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const visible=options.filter(x=>!x.hidden),index=visible.indexOf(b),next=index+(e.key==='ArrowDown'?1:-1);if(next<0)search.focus();else visible[Math.min(next,visible.length-1)]?.focus()}})});
- stage.addEventListener('pointerdown',e=>{beginExploring();if(!e.target.closest('.find-wrap'))closeSearch()});
- stage.addEventListener('wheel',beginExploring,{passive:true});
+ stage.addEventListener('pointerdown',e=>{if(!e.target.closest('.find-wrap'))closeSearch()});
  return {redraw:()=>{cancelAnimationFrame(frame);zoom=1;status.textContent='Drag or zoom, then choose a country or city.';draw()}};
 }

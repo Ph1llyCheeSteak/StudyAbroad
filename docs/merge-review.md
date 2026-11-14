@@ -1,6 +1,6 @@
 # Independent merge review
 
-For every pull request to `main`, including changes to `AGENTS.md`, product direction, configuration and this review procedure, an independent subagent should review the proposed result before merge. The author coordinates a bounded task with acceptance criteria and gives the reviewer the PR and current base/head commit IDs. A subagent review is advisory unless an independently controlled GitHub integration reports a required status; this document alone does not enforce it.
+For every pull request to `main`, including changes to `AGENTS.md`, product direction, configuration and this review procedure, an independent subagent should review the proposed result before merge. Keep the review proportionate and fast: focus on real regressions, broken core flows, unintended departures from the agreed direction, and material security or privacy issues, not stylistic preferences. The author coordinates a bounded task with acceptance criteria and gives the reviewer the PR and current base/head commit IDs. A subagent review is advisory unless an independently controlled GitHub integration reports a required status; this document alone does not enforce it.
 
 ## Review the result
 
@@ -8,7 +8,7 @@ For every pull request to `main`, including changes to `AGENTS.md`, product dire
 2. Compare the change and resulting files to the **base branch's** product vision, agent instructions, hackathon constraints and task criteria. A PR cannot use its own changed instructions to approve itself. Identify product regressions, unintended scope changes, privacy or trust concerns, and broken links or instructions. Note intentional direction changes for team review.
 3. Run relevant documented checks and, for app-affecting changes, launch the candidate and walk through the affected flow and the main student journey in a real browser, including a mobile viewport. Use synthetic data. Observe the rendered app and check page and console errors. Record a video of the walkthrough, inspect it, and report the artifact location and what it covers; never imply a video was made or watched when it was not.
 4. Report findings with severity, location, impact and reproduction, plus tested base/head, checks, video and limitations. If the app does not exist or a change is documentation-only, mark the video and runtime walkthrough **not applicable**, with a reason. If a required review, setup, check, recording or inspection cannot be completed, mark it **incomplete**, not passed.
-5. Fix material findings and repeat affected checks. A change in base or head invalidates the candidate review; review the new merge result again. A teammate with the necessary permissions makes the final merge decision.
+5. Fix material findings and repeat affected checks. A change in base or head invalidates the candidate review; review the new merge result again. Minor polish suggestions do not block a useful change. Once required checks are complete and no material findings remain, an authorized agent may merge without waiting for a teammate's routine approval. Escalate consequential product decisions, unresolved material risks, or missing authority; do not treat an incomplete review as a pass.
 
 ## Enforcement and safety
 

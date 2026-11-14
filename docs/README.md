@@ -8,6 +8,7 @@ Status: initial working drafts, 2026-11-13. Repository files become shared with 
 - [Hackathon brief](hackathon.md): schedule, constraints and judging priorities for the short build.
 - [Merge review](merge-review.md): independent review, candidate-merge testing and visual evidence process.
 - [Team workstreams](team-workstreams.md): proposed ownership, shared contracts and integration checkpoints.
+- [Foundation contract](foundation-contract.md): runnable app, routes, shared fixtures, persistence, and extension points.
 - [Project setup](project-setup.md): repository, current tools, workflow and unknowns.
 - [Agent guidance](../AGENTS.md): context, collaboration and criteria for future work.
 - [Project README](../README.md): concise project introduction and candidate focus areas.

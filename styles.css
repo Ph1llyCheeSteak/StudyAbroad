@@ -184,7 +184,8 @@ body:has(#city-screen:not([hidden])) .demo-note{display:none}
 .city-search:focus-within{width:min(260px,calc(100vw - 40px));gap:8px}
 #globe-view .city-search #find-city{width:0;opacity:0;flex:1}
 #globe-view .city-search:focus-within #find-city{width:auto;opacity:1}
-#globe-view.has-started .globe-heading{visibility:hidden}
+#globe-view .globe-heading{visibility:hidden}
+#globe-view.globe-at-rest .globe-heading{visibility:visible}
 @media (prefers-reduced-motion:reduce){.city-search{transition:none}}
 
 /* Center the arrow and use pictograms for the place categories. */

@@ -136,3 +136,6 @@ body:has(#globe-view:not([hidden])){overflow:hidden}
 /* Keep the floating bar and its icons the same size on every screen. */
 .bottom-nav.bottom-nav { box-sizing: border-box; width: min(320px, calc(100vw - 32px)); min-width: min(320px, calc(100vw - 32px)); max-width: min(320px, calc(100vw - 32px)); height: 56px; min-height: 56px; max-height: 56px; }
 .bottom-nav.bottom-nav a svg, .bottom-nav.bottom-nav a.active svg, .bottom-nav.bottom-nav .compass-icon svg { box-sizing: border-box; width: 24px; height: 24px; }
+
+/* Reserve scrollbar space when the full-screen globe locks page scrolling. */
+html { scrollbar-gutter: stable; }

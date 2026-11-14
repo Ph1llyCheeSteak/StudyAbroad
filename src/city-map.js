@@ -2,7 +2,7 @@ import {readState,vote,savePlace} from './store.js';
 const locations={barcelona:{center:[41.3874,2.1686],places:{bunkers:[41.418,2.159],mercat:[41.3853,2.1798], 'sample-bcn-hostel':[41.396,2.159], 'sample-bcn-nightlife':[41.376,2.17]}},madrid:{center:[40.4168,-3.7038],places:{retiro:[40.4153,-3.6845], 'sample-mad-cafe':[40.424,-3.705], 'sample-mad-hostel':[40.41,-3.71], 'sample-mad-nightlife':[40.43,-3.7]}},lisbon:{center:[38.7223,-9.1393],places:{alfama:[38.711,-9.13], 'sample-lis-cafe':[38.722,-9.14], 'sample-lis-hostel':[38.728,-9.145], 'sample-lis-nightlife':[38.715,-9.145]}}};
 export function openCity(city,places,onBack){
  const screen=document.querySelector('#city-screen'),globe=document.querySelector('#globe-view'),config=locations[city.id];if(!config)return;globe.hidden=true;screen.hidden=false;
- screen.querySelector('h2').textContent=city.name;screen.querySelector('.city-subtitle').textContent='Sample recommendations · '+city.country;
+ screen.querySelector('h2').textContent=city.name;screen.querySelector('.city-subtitle').textContent=city.country;
  const node=screen.querySelector('#city-map');node.innerHTML='';let active=true;const map=L.map(node,{zoomControl:false}).setView(config.center,11);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
  const pin=L.divIcon({className:'pin-wrapper',html:'<span class="physical-pin" aria-hidden="true"></span>',iconSize:[30,42],iconAnchor:[15,40],popupAnchor:[0,-35]});

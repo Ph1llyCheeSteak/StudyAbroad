@@ -9,7 +9,7 @@ export function createDemoStore(storage, key = 'trvlr-demo-v1') {
     data = saved && Array.isArray(saved.students) && Array.isArray(saved.trips) && Array.isArray(saved.recommendations) ? saved : fresh();
   } catch { data = fresh(); }
   const snapshot = () => structuredClone(data);
-  const persist = () => storage.setItem(key, JSON.stringify(data));
+  const commit = next => { storage.setItem(key, JSON.stringify(next)); data = next; };
   return {
     getState: snapshot,
     getCurrentStudent: () => structuredClone(data.students.find(student => student.id === data.currentStudentId) ?? null),
@@ -23,20 +23,20 @@ export function createDemoStore(storage, key = 'trvlr-demo-v1') {
       const budget = input.budgetAmount === '' || input.budgetAmount == null ? null : Number(input.budgetAmount);
       if (budget !== null && (!Number.isFinite(budget) || budget < 0)) throw new Error('Enter a valid budget.');
       const trip = { id: globalThis.crypto.randomUUID(), title, destination, startDate: input.startDate, endDate: input.endDate, budgetAmount: budget, currency: 'EUR', description: String(input.description ?? '').trim(), creatorId: data.currentStudentId, participantIds: [data.currentStudentId] };
-      data.trips.push(trip); persist(); return structuredClone(trip);
+      const next = snapshot(); next.trips.push(trip); commit(next); return structuredClone(trip);
     },
     joinTrip(id, studentId = data.currentStudentId) {
       const trip = data.trips.find(item => item.id === id);
       if (!trip || !data.students.some(student => student.id === studentId)) throw new Error('Trip or student not found.');
-      if (!trip.participantIds.includes(studentId)) { trip.participantIds.push(studentId); persist(); }
-      return structuredClone(trip);
+      if (!trip.participantIds.includes(studentId)) { const next = snapshot(); next.trips.find(item => item.id === id).participantIds.push(studentId); commit(next); }
+      return structuredClone(data.trips.find(item => item.id === id));
     },
     leaveTrip(id, studentId = data.currentStudentId) {
       const trip = data.trips.find(item => item.id === id);
       if (!trip || !data.students.some(student => student.id === studentId)) throw new Error('Trip or student not found.');
       if (trip.creatorId === studentId) throw new Error('The trip creator cannot leave their own trip.');
-      trip.participantIds = trip.participantIds.filter(id => id !== studentId); persist(); return structuredClone(trip);
+      const next = snapshot(); const updated = next.trips.find(item => item.id === id); updated.participantIds = updated.participantIds.filter(id => id !== studentId); commit(next); return structuredClone(updated);
     },
-    reset() { data = fresh(); persist(); return snapshot(); },
+    reset() { commit(fresh()); return snapshot(); },
   };
 }

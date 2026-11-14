@@ -6,7 +6,7 @@ Status: current observations and proposed workflow, 2026-11-13. Verify environme
 
 - GitHub: [Ph1llyCheeSteak/StudyAbroad](https://github.com/Ph1llyCheeSteak/StudyAbroad) (public when last checked).
 - Default branch: `main`. Individual checkouts and feature branches may track other branches; inspect the current checkout before changing it.
-- This checkout has a README and initial shared documentation; the app, framework, backend, hosting and deployment process have not been selected.
+- `main` contains shared documentation and brand references. A separate prototype and Sites deployment exist as described below; the redesign's framework, backend and long-term deployment process are not yet agreed.
 - Git is available. Node and pnpm were available in the Codex runtime when checked; npm was not on PATH. Teammates should verify their own tooling once a stack is chosen.
 
 ## Rove demo and redesign baseline

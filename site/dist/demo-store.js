@@ -40,4 +40,3 @@ export function createDemoStore(storage, key = 'trvlr-demo-v1') {
     reset() { data = fresh(); persist(); return snapshot(); },
   };
 }
-

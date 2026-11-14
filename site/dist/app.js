@@ -42,4 +42,3 @@ el('search').addEventListener('input', render);
 let timeout;
 function notify(message) { const toast = el('toast'); toast.textContent = message; toast.style.display = 'block'; clearTimeout(timeout); timeout = setTimeout(() => toast.style.display = 'none', 3500); }
 render();
-

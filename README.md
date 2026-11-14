@@ -1,6 +1,6 @@
 # Travel Abroad
 
-For the working product vision, hackathon brief, project setup, and agent guidance, see [shared project references](docs/README.md). TRVLR is the working name used in the team's one-pager; final naming remains open.
+TRVLR is the working product name; final naming remains open.
 
 Travel Abroad is an early-stage concept for a student-centered social platform that helps students studying abroad meet one another and plan trips together.
 
@@ -14,7 +14,7 @@ These are hypotheses to validate with students, not established findings.
 
 Help students find people to travel with and move from a shared idea to an organized trip. The experience should be welcoming, easy to use, and useful even when a student does not already know a group of travelers. Sharing expenses or finding companions may make trips more affordable, but savings are not guaranteed.
 
-The initial focus is student connection and trip planning. Administrative workflows, including sharing plans with program staff, may be explored later if students and programs find them useful. The product should not be assumed to replace a program's official travel registration or safety processes.
+The core experience brings together student connection, trip planning, accommodations, recommendations, and safety. Trip registration with program staff is part of the proposed planning experience. The product should not be assumed to replace a program's official travel registration or safety processes.
 
 ## Initial customer profile
 
@@ -29,19 +29,19 @@ A practical starting segment to investigate is students in several programs in t
 
 ## Key features
 
-These reflect the direction in the [TRVLR one-pager](https://docs.google.com/document/d/1vsYGyfvnKLjt5Aeze34ywLzyPZWZ98nN3zM9n-giGsE). They are proposed features to validate, not claims of implemented functionality.
+These five features are the core of TRVLR's product direction. The project is at the concept stage, and the details still need validation and implementation.
 
 1. **Student connections:** Browse profiles, meet peers across programs, and find travel companions.
-2. **Group trip planning:** Coordinate itineraries, budgets, calendars, and shared costs; explore letting students register trips with program staff.
+2. **Group trip planning:** Coordinate itineraries, budgets, calendars, and shared costs; register trips with program staff.
 3. **Places to stay:** Discover and plan hostel and Airbnb bookings together, informed by other students' experiences. The booking experience and any third-party integrations remain to be determined.
 4. **Student recommendations:** Share and find practical advice about destinations, housing, restaurants, and local life.
+5. **Safety:** Surface information about local conflicts, weather, and travel disruptions, and explore identity verification at signup.
 
-## Ideas to explore later
+## Ideas to explore
 
-- Privacy controls, reporting, and identity or student-status verification to help students feel comfortable connecting.
+- Privacy controls and reporting to help students feel comfortable connecting.
 - Connections for local meetups or academic collaboration.
-- Program information, contacts, and optional sharing of trip plans with staff.
-- Safety information and alerts, subject to appropriate sources and operational support.
+- Program information and contacts.
 
 ## Questions to validate
 

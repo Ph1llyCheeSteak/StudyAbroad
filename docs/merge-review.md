@@ -1,0 +1,15 @@
+# Independent merge review
+
+For every pull request to `main`, including changes to `AGENTS.md`, product direction, configuration and this review procedure, an independent subagent should review the proposed result before merge. The author coordinates a bounded task with acceptance criteria and gives the reviewer the PR and current base/head commit IDs. A subagent review is advisory unless an independently controlled GitHub integration reports a required status; this document alone does not enforce it.
+
+## Review the result
+
+1. Fetch current `main` and PR head. Record both commit IDs and construct or fetch the exact proposed merge in an isolated checkout. Do not modify the author's work or shared branches. Record the candidate merge ID or reproducible base/head and merge method. If it conflicts, mark the review blocked.
+2. Compare the change and resulting files to the **base branch's** product vision, agent instructions, hackathon constraints and task criteria. A PR cannot use its own changed instructions to approve itself. Identify product regressions, unintended scope changes, privacy or trust concerns, and broken links or instructions. Note intentional direction changes for team review.
+3. Run relevant documented checks and, for app-affecting changes, launch the candidate and walk through the affected flow and the main student journey in a real browser, including a mobile viewport. Use synthetic data. Observe the rendered app and check page and console errors. Record a video of the walkthrough, inspect it, and report the artifact location and what it covers; never imply a video was made or watched when it was not.
+4. Report findings with severity, location, impact and reproduction, plus tested base/head, checks, video and limitations. If the app does not exist or a change is documentation-only, mark the video and runtime walkthrough **not applicable**, with a reason. If a required review, setup, check, recording or inspection cannot be completed, mark it **incomplete**, not passed.
+5. Fix material findings and repeat affected checks. A change in base or head invalidates the candidate review; review the new merge result again. A teammate with the necessary permissions makes the final merge decision.
+
+## Enforcement and safety
+
+GitHub branch protection can require pull requests, reviewer approvals and status checks, but an `AGENTS.md` instruction does not itself start a subagent or publish a required check. A future automated reviewer requires a separately configured authenticated integration that evaluates the exact merge candidate and publishes a trustworthy status. Do not create a passing placeholder status. Run untrusted PR code without privileged secrets or elevated credentials. No app, runnable tests, video pipeline or automatic review integration has been established yet.

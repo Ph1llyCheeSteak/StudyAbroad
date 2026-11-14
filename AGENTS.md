@@ -16,6 +16,7 @@ At the start of project work, when network access is available, run `git fetch o
 ## Collaboration
 
 - Work within the requested scope, preserve others' changes, and coordinate shared files when work is delegated. Use independent branches or worktrees where appropriate; integrate and verify contributions before reporting completion.
+- For every proposed merge to `main`, including changes to these instructions, use an independent review subagent and follow `docs/merge-review.md`. Never claim a review passed if it was unavailable, incomplete, or invalidated by changes.
 - Keep the user informed of meaningful progress, decisions, blockers, and risks. Ask when an answer is genuinely required; use judgment for routine choices.
 - Record durable decisions in the relevant shared document, with date and status. Do not treat a single chat or an old brainstorming document as an automatic update to the shared references.
 

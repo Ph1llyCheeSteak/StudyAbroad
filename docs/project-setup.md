@@ -14,7 +14,7 @@ Status: current observations and proposed workflow, 2026-11-13. Verify environme
 1. Fetch and inspect the latest `main` and local changes before beginning work. Preserve existing uncommitted work. Base new feature branches on a `main` that contains the shared references; existing branches need to incorporate that commit through a normal merge or rebase when safe.
 2. Make focused changes on a descriptive feature branch. Use `codex/` for branches created by Codex unless the team chooses another convention.
 3. Define acceptance criteria, implement, and run checks appropriate to the change. Document any missing checks or assumptions.
-4. Open a pull request for team review when requested or appropriate, and resolve conflicts with care. Do not assume deployment or merge authorization from permission to develop.
+4. Open a pull request for changes to `main`, use the independent review process in [merge review](merge-review.md), and resolve conflicts with care. Do not assume deployment or merge authorization from permission to develop.
 5. Keep product and technical decisions current in the shared references.
 
 The repository has no established install, run, test or build commands yet. Add verified instructions and prerequisite versions once an application stack exists; do not invent commands.
@@ -27,4 +27,4 @@ The GitHub connector is available in this environment. Access for each teammate 
 
 ## Open decisions
 
-Framework and package manager; hosting and deployment; data storage and authentication; issue tracking; branch protection and review policy; ownership of product and brand decisions; and how shared references will be maintained. These require team decisions before documenting them as facts.
+Framework and package manager; hosting and deployment; data storage and authentication; issue tracking; automated reviewer integration; ownership of product and brand decisions; and how shared references will be maintained. These require team decisions before documenting them as facts.

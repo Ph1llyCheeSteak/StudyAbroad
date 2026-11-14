@@ -24,6 +24,9 @@ At the start of project work, when network access is available, run `git fetch o
 
 ## Collaboration
 
+- The human team sets direction and retains final control. Codex agents assist their human users and make routine decisions only within their authorized scope; they do not replace human product, publishing, or merge decisions.
+- A Codex agent may coordinate and delegate bounded tasks to Claude Code when requested or appropriate and available. The coordinating agent remains responsible for reviewing the output, integrating it safely, and reporting limitations. Claude can also provide an independent review when the applicable review requirements are met; delegation alone is not proof of independence.
+- The user's Claude Code session is for their Codex agent's delegated work; do not assume it is available to teammates' agents. Do not share account credentials or store secrets in the repository.
 - Work within the requested scope, preserve others' changes, and coordinate shared files when work is delegated. Use independent branches or worktrees where appropriate; integrate and verify contributions before reporting completion.
 - For every proposed merge to `main`, including changes to these instructions, use an independent review subagent and follow `docs/merge-review.md`. Never claim a review passed if it was unavailable, incomplete, or invalidated by changes.
 - Keep the user informed of meaningful progress, decisions, blockers, and risks. Ask when an answer is genuinely required; use judgment for routine choices.

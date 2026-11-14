@@ -129,3 +129,6 @@ body:has(#globe-view:not([hidden])){overflow:hidden}
 .bottom-nav .nav-icon-filled{display:none}
 .bottom-nav a.active .nav-icon-outline{display:none}
 .bottom-nav a.active .nav-icon-filled{display:block}
+
+/* A compact, softly translucent navigation bar. */
+.bottom-nav.bottom-nav{width:min(320px,calc(100% - 32px));height:56px;padding:3px 12px;border-radius:18px;background:rgba(250,250,247,.86);border:1px solid rgba(255,255,255,.7);box-shadow:0 6px 20px #123b401c;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}

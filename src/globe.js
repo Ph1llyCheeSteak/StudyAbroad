@@ -1,19 +1,24 @@
-const coords={barcelona:[41.3874,2.1686],madrid:[40.4168,-3.7038],lisbon:[38.7223,-9.1393]};
+const coords={barcelona:[2.1686,41.3874],madrid:[-3.7038,40.4168],lisbon:[-9.1393,38.7223]};
 export function mountGlobe(cities){
- const canvas=document.querySelector('#earth'),ctx=canvas.getContext('2d'),status=document.querySelector('#location-status');let lat=25,lon=0,land=null,drag=null,userLocation=null;
- const rad=Math.PI/180;
- function project(a,b){const p=a*rad,l=(b-lon)*rad,p0=lat*rad;return [Math.cos(p)*Math.sin(l),Math.cos(p0)*Math.sin(p)-Math.sin(p0)*Math.cos(p)*Math.cos(l),Math.sin(p0)*Math.sin(p)+Math.cos(p0)*Math.cos(p)*Math.cos(l)]}
- function draw(){const d=canvas.width,r=d*.46,c=d/2;ctx.clearRect(0,0,d,d);ctx.beginPath();ctx.arc(c,c,r,0,7);ctx.fillStyle='#398ba1';ctx.fill();ctx.save();ctx.beginPath();ctx.arc(c,c,r,0,7);ctx.clip();ctx.strokeStyle='#6aabba';ctx.lineWidth=1;
- for(let a=-60;a<=60;a+=30){ctx.beginPath();for(let b=-180;b<=180;b+=3){const [x,y,z]=project(a,b);if(z>0){if(b===-180||project(a,b-3)[2]<=0)ctx.moveTo(c+x*r,c-y*r);else ctx.lineTo(c+x*r,c-y*r)}}ctx.stroke()}
- for(let b=-180;b<180;b+=30){ctx.beginPath();for(let a=-90;a<=90;a+=3){const [x,y,z]=project(a,b);if(z>0){if(a===-90||project(a-3,b)[2]<=0)ctx.moveTo(c+x*r,c-y*r);else ctx.lineTo(c+x*r,c-y*r)}}ctx.stroke()}
- if(land){ctx.fillStyle='#47745e';for(const feature of land.features){const polys=feature.geometry.type==='Polygon'?[feature.geometry.coordinates]:feature.geometry.type==='MultiPolygon'?feature.geometry.coordinates:[];for(const poly of polys){for(const ring of poly){let active=false;ctx.beginPath();for(const [b,a] of ring){const [x,y,z]=project(a,b);if(z>0){if(!active){ctx.moveTo(c+x*r,c-y*r);active=true}else ctx.lineTo(c+x*r,c-y*r)}else if(active){ctx.closePath();ctx.fill();active=false}}if(active){ctx.closePath();ctx.fill()}}}}}ctx.restore();
- if(userLocation){const [x,y,z]=project(...userLocation);if(z>0){ctx.beginPath();ctx.arc(c+x*r,c-y*r,9,0,7);ctx.fillStyle='#194f59';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke()}}
- for(const city of cities){const [a,b]=coords[city.id]||[];if(a===undefined)continue;const [x,y,z]=project(a,b);if(z>0){ctx.beginPath();ctx.arc(c+x*r,c-y*r,6,0,7);ctx.fillStyle='#e9ab78';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke()}}
+ const canvas=document.querySelector('#earth'),ctx=canvas.getContext('2d'),status=document.querySelector('#location-status'),marker=document.querySelector('#city-board-marker'),menu=document.querySelector('#board-menu');
+ let rotation=[0,-25,0],land=null,drag=null,userLocation=null;
+ const projection=d3.geoOrthographic().translate([350,350]).scale(322).clipAngle(90).precision(.4);
+ const path=d3.geoPath(projection,ctx),graticule=d3.geoGraticule10();
+ function draw(){
+  projection.rotate(rotation);ctx.clearRect(0,0,700,700);
+  ctx.beginPath();path({type:'Sphere'});ctx.fillStyle='#398ba1';ctx.fill();
+  ctx.beginPath();path(graticule);ctx.strokeStyle='#6aabba';ctx.lineWidth=1;ctx.stroke();
+  if(land){ctx.beginPath();path(land);ctx.fillStyle='#47745e';ctx.fill();}
+  if(userLocation&&d3.geoDistance(userLocation,[-rotation[0],-rotation[1]])<Math.PI/2){const [x,y]=projection(userLocation);ctx.beginPath();ctx.arc(x,y,9,0,Math.PI*2);ctx.fillStyle='#194f59';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke();}
+  const anchor=[-3.7,40.4],visible=d3.geoDistance(anchor,[-rotation[0],-rotation[1]])<1.48;
+  if(visible){const [x,y]=projection(anchor);marker.style.left=(x/7)+'%';marker.style.top=(y/7)+'%';marker.hidden=false}else{marker.hidden=true;menu.hidden=true;marker.setAttribute('aria-expanded','false')}
  }
- draw();fetch('https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{land=data;draw()}).catch(()=>{status.textContent='Map detail unavailable. Choose a city below.'});
- canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,lon,lat};canvas.setPointerCapture(e.pointerId)});
- canvas.addEventListener('pointermove',e=>{if(!drag)return;lon=drag.lon-(e.clientX-drag.x)*.5;lat=Math.max(-85,Math.min(85,drag.lat+(e.clientY-drag.y)*.4));draw()});
+ draw();
+ fetch('./vendor/countries.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{land=data;draw()}).catch(()=>{status.textContent='Map details unavailable. Choose a city below.'});
+ canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,rotation:[...rotation]};canvas.setPointerCapture(e.pointerId)});
+ canvas.addEventListener('pointermove',e=>{if(!drag)return;rotation=[drag.rotation[0]+(e.clientX-drag.x)*.45,Math.max(-89,Math.min(89,drag.rotation[1]-(e.clientY-drag.y)*.45)),0];draw()});
  canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('pointercancel',()=>drag=null);
- document.querySelector('#locate').addEventListener('click',()=>{if(!navigator.geolocation){status.textContent='Location is unavailable. Choose a city below.';return}status.textContent='Finding your location…';navigator.geolocation.getCurrentPosition(p=>{lat=p.coords.latitude;lon=p.coords.longitude;userLocation=[lat,lon];draw();status.textContent='Globe centered on your approximate location. Choose an available city below.'},()=>{status.textContent='Location unavailable or not allowed. Choose a city below.'},{timeout:10000,maximumAge:300000})});
- document.querySelectorAll('[data-center-city]').forEach(button=>button.addEventListener('click',()=>{const v=coords[button.dataset.centerCity];if(v){[lat,lon]=v;draw();status.textContent=(cities.find(c=>c.id===button.dataset.centerCity)?.name||'City')+' centered on the globe.'}}));
+ marker.addEventListener('click',()=>{menu.hidden=!menu.hidden;marker.setAttribute('aria-expanded',String(!menu.hidden));if(!menu.hidden)menu.querySelector('a')?.focus()});
+ document.querySelector('#locate').addEventListener('click',()=>{if(!navigator.geolocation){status.textContent='Location is unavailable. Choose a city below.';return}status.textContent='Finding your location…';navigator.geolocation.getCurrentPosition(p=>{userLocation=[p.coords.longitude,p.coords.latitude];rotation=[-userLocation[0],-userLocation[1],0];draw();status.textContent='Globe centered on your approximate location. Choose an available city below.'},()=>{status.textContent='Location unavailable or not allowed. Choose a city below.'},{timeout:10000,maximumAge:300000})});
+ document.querySelectorAll('[data-center-city]').forEach(button=>button.addEventListener('click',()=>{const v=coords[button.dataset.centerCity];if(v){rotation=[-v[0],-v[1],0];draw();status.textContent=(cities.find(c=>c.id===button.dataset.centerCity)?.name||'City')+' centered on the globe.'}}));
 }

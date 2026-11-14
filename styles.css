@@ -25,3 +25,5 @@ body:has(.explore-globe) .city-row:hover{background:#225f69}
 body:has(.explore-globe) .city-row small{color:#bed7d0}
 body:has(.explore-globe) .center-city{color:#e1a87d}
 body:has(.explore-globe) .demo-note{background:#0e3037;color:#c5dedb}
+
+.globe-stage{position:relative}.board-marker{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:12px;border:2px solid #f3e9dc;background:#a96f4d;color:white;box-shadow:0 3px 14px #102e32aa;font-size:25px;line-height:1;z-index:2}.board-marker:hover{background:#be8058;transform:translate(-50%,-50%) scale(1.06)}.board-menu{position:absolute;top:50%;left:50%;transform:translate(-50%,-10%);z-index:3;width:min(240px,80%);background:#f3e9dc;color:#194f59;border-radius:12px;box-shadow:0 10px 30px #0d3035aa;text-align:left;padding:14px}.board-menu[hidden],.board-marker[hidden]{display:none}.board-menu strong,.board-menu>span{display:block}.board-menu>span{color:#526c64;font-size:12px;margin:4px 0 8px}.board-menu a{display:flex;justify-content:space-between;padding:10px 2px;border-top:1px solid #d5dbd0;font-size:14px;font-weight:700}.board-menu a:hover{text-decoration:underline}

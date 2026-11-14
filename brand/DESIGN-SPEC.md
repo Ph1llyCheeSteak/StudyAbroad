@@ -1,6 +1,6 @@
 # Option A design specification
 
-Status: Lucky selected Option A linework and the balanced earth gradient on 2026-11-14. This is a working icon direction, not approval of an app name, complete identity, or production release. Files are local on `lucky` until committed and pushed.
+Status: Lucky selected Option A linework and the balanced earth gradient on 2026-11-14. This is a working icon direction, not approval of an app name, complete identity, or production release. The package is a working direction and remains subject to team review.
 
 ## Files and formats
 

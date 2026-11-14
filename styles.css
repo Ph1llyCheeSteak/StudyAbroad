@@ -45,3 +45,7 @@ body:has(.explore-globe) .dot{color:var(--brown)}
 .compass-icon{width:64px;height:64px;border:4px solid #fff;background:var(--ink)}
 .compass-icon svg{width:34px;height:34px}
 .compass-link.active .compass-icon{background:var(--ink)}
+/* Keep the oversized compass centered on the bar without expanding its grid row. */
+.bottom-nav{grid-template-rows:minmax(0,1fr)}
+.bottom-nav .compass-link{min-height:0}
+.compass-icon{flex:0 0 64px}

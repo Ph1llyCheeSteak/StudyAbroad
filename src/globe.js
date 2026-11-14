@@ -1,24 +1,19 @@
-const coords={barcelona:[2.1686,41.3874],madrid:[-3.7038,40.4168],lisbon:[-9.1393,38.7223]};
+const coords={barcelona:[2.1686,41.3874],madrid:[-3.7038,40.4168],lisbon:[-9.1393,38.7223]}, colors={barcelona:'#f2b77a',madrid:'#b5dbad',lisbon:'#f3df9b'};
 export function mountGlobe(cities){
- const canvas=document.querySelector('#earth'),ctx=canvas.getContext('2d'),status=document.querySelector('#location-status'),marker=document.querySelector('#city-board-marker'),menu=document.querySelector('#board-menu');
- let rotation=[0,-25,0],land=null,drag=null,userLocation=null;
- const projection=d3.geoOrthographic().translate([350,350]).scale(322).clipAngle(90).precision(.4);
- const path=d3.geoPath(projection,ctx),graticule=d3.geoGraticule10();
- function draw(){
-  projection.rotate(rotation);ctx.clearRect(0,0,700,700);
-  ctx.beginPath();path({type:'Sphere'});ctx.fillStyle='#398ba1';ctx.fill();
-  ctx.beginPath();path(graticule);ctx.strokeStyle='#6aabba';ctx.lineWidth=1;ctx.stroke();
-  if(land){ctx.beginPath();path(land);ctx.fillStyle='#47745e';ctx.fill();}
-  if(userLocation&&d3.geoDistance(userLocation,[-rotation[0],-rotation[1]])<Math.PI/2){const [x,y]=projection(userLocation);ctx.beginPath();ctx.arc(x,y,9,0,Math.PI*2);ctx.fillStyle='#194f59';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke();}
-  const anchor=[-3.7,40.4],visible=d3.geoDistance(anchor,[-rotation[0],-rotation[1]])<1.48;
-  if(visible){const [x,y]=projection(anchor);marker.style.left=(x/7)+'%';marker.style.top=(y/7)+'%';marker.hidden=false}else{marker.hidden=true;menu.hidden=true;marker.setAttribute('aria-expanded','false')}
- }
- draw();
- fetch('./vendor/countries.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{land=data;draw()}).catch(()=>{status.textContent='Map details unavailable. Choose a city below.'});
+ const canvas=document.querySelector('#earth'),ctx=canvas.getContext('2d'),status=document.querySelector('#location-status'),chooser=document.querySelector('#city-chooser');let rotation=[0,-25,0],land=null,boundaries=[],zoom=1,drag=null,userLocation=null;
+ const projection=d3.geoOrthographic().translate([350,350]).clipAngle(90).precision(.4),path=d3.geoPath(projection,ctx),graticule=d3.geoGraticule10();
+ function draw(){projection.rotate(rotation).scale(322*zoom);ctx.clearRect(0,0,700,700);ctx.beginPath();path({type:'Sphere'});ctx.fillStyle='#398ba1';ctx.fill();ctx.beginPath();path(graticule);ctx.strokeStyle='#6aabba';ctx.lineWidth=1;ctx.stroke();if(land){ctx.beginPath();path(land);ctx.fillStyle='#47745e';ctx.fill()} boundaries.forEach((geometry,i)=>{if(!geometry)return;ctx.beginPath();const lines=geometry.type==='Polygon'?geometry.coordinates:geometry.type==='MultiPolygon'?geometry.coordinates.flat():[];path({type:'MultiLineString',coordinates:lines});ctx.strokeStyle=colors[cities[i]?.id]||'#fff';ctx.lineWidth=3;ctx.stroke()});if(userLocation&&d3.geoDistance(userLocation,[-rotation[0],-rotation[1]])<Math.PI/2){let [x,y]=projection(userLocation);ctx.beginPath();ctx.arc(x,y,8,0,7);ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle='#194f59';ctx.lineWidth=3;ctx.stroke()}if(zoom<20){cities.forEach(city=>{let v=coords[city.id];if(!v||d3.geoDistance(v,[-rotation[0],-rotation[1]])>1.5)return;let [x,y]=projection(v);ctx.beginPath();ctx.arc(x,y,5,0,7);ctx.fillStyle=colors[city.id];ctx.fill();ctx.strokeStyle='#123b43';ctx.lineWidth=2;ctx.stroke()})}}
+ function setZoom(n){zoom=Math.max(1,Math.min(256,n));draw();status.textContent=zoom>=32?'Select a colored city outline to open its map.':'Zoom in toward a city, or use Find a city.'}
+ function center(city){let v=coords[city.id];if(!v)return;rotation=[-v[0],-v[1],0];zoom=128;draw();status.textContent=city.name+' centered. Select the outline or open its city board.';let link=document.querySelector('#open-city');link.href='#explore/'+encodeURIComponent(city.id);link.textContent='Open '+city.name+' ↗';link.hidden=false;chooser.hidden=true;document.querySelector('#find-city').setAttribute('aria-expanded','false')}
+ function ringContains(ring,p){let inside=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){let [xi,yi]=ring[i],[xj,yj]=ring[j];if(((yi>p[1])!==(yj>p[1]))&&(p[0]<(xj-xi)*(p[1]-yi)/(yj-yi)+xi))inside=!inside}return inside}
+ function contains(g,p){if(!g)return false;let polys=g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:[];return polys.some(poly=>ringContains(poly[0],p)&&!poly.slice(1).some(r=>ringContains(r,p)))}
+ draw();Promise.all([fetch('./vendor/countries.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}),fetch('./vendor/city-boundaries.json').then(r=>{if(!r.ok)throw Error();return r.json()})]).then(([l,b])=>{land=l;boundaries=b;draw()}).catch(()=>{status.textContent='Map details unavailable. Use Find a city.'});
  canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,rotation:[...rotation]};canvas.setPointerCapture(e.pointerId)});
- canvas.addEventListener('pointermove',e=>{if(!drag)return;rotation=[drag.rotation[0]+(e.clientX-drag.x)*.45,Math.max(-89,Math.min(89,drag.rotation[1]-(e.clientY-drag.y)*.45)),0];draw()});
- canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('pointercancel',()=>drag=null);
- marker.addEventListener('click',()=>{menu.hidden=!menu.hidden;marker.setAttribute('aria-expanded',String(!menu.hidden));if(!menu.hidden)menu.querySelector('a')?.focus()});
- document.querySelector('#locate').addEventListener('click',()=>{if(!navigator.geolocation){status.textContent='Location is unavailable. Choose a city below.';return}status.textContent='Finding your location…';navigator.geolocation.getCurrentPosition(p=>{userLocation=[p.coords.longitude,p.coords.latitude];rotation=[-userLocation[0],-userLocation[1],0];draw();status.textContent='Globe centered on your approximate location. Choose an available city below.'},()=>{status.textContent='Location unavailable or not allowed. Choose a city below.'},{timeout:10000,maximumAge:300000})});
- document.querySelectorAll('[data-center-city]').forEach(button=>button.addEventListener('click',()=>{const v=coords[button.dataset.centerCity];if(v){rotation=[-v[0],-v[1],0];draw();status.textContent=(cities.find(c=>c.id===button.dataset.centerCity)?.name||'City')+' centered on the globe.'}}));
+ canvas.addEventListener('pointermove',e=>{if(!drag)return;rotation=[drag.rotation[0]+(e.clientX-drag.x)*.45/Math.sqrt(zoom),Math.max(-89,Math.min(89,drag.rotation[1]-(e.clientY-drag.y)*.45/Math.sqrt(zoom))),0];draw()});
+ canvas.addEventListener('pointerup',e=>{if(drag&&Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6){let box=canvas.getBoundingClientRect(),p=projection.invert([(e.clientX-box.left)*700/box.width,(e.clientY-box.top)*700/box.height]);if(p){let i=boundaries.findIndex(g=>contains(g,p));if(i>=0){location.hash='#explore/'+cities[i].id}else if(zoom<32){let nearest=cities.map(c=>({c,d:d3.geoDistance(coords[c.id],p)})).sort((a,b)=>a.d-b.d)[0];if(nearest&&nearest.d<.12)center(nearest.c)}}}drag=null});canvas.addEventListener('pointercancel',()=>drag=null);
+ canvas.addEventListener('wheel',e=>{e.preventDefault();setZoom(zoom*(e.deltaY<0?1.4:1/1.4))},{passive:false});
+ document.querySelector('#zoom-in').onclick=()=>setZoom(zoom*2);document.querySelector('#zoom-out').onclick=()=>setZoom(zoom/2);
+ document.querySelector('#find-city').onclick=e=>{chooser.hidden=!chooser.hidden;e.currentTarget.setAttribute('aria-expanded',String(!chooser.hidden));if(!chooser.hidden)chooser.querySelector('button')?.focus()};
+ chooser.querySelectorAll('[data-city]').forEach(button=>button.onclick=()=>center(cities.find(c=>c.id===button.dataset.city)));
+ document.querySelector('#locate').onclick=()=>{if(!navigator.geolocation){status.textContent='Location unavailable. Use Find a city.';return}status.textContent='Finding your location…';navigator.geolocation.getCurrentPosition(p=>{userLocation=[p.coords.longitude,p.coords.latitude];rotation=[-userLocation[0],-userLocation[1],0];zoom=1;draw();status.textContent='Centered on your approximate location.'},()=>{status.textContent='Location unavailable or not allowed. Use Find a city.'},{timeout:10000,maximumAge:300000})};
 }

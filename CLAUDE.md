@@ -19,7 +19,7 @@ Apply the fetched guidance alongside the active branch's task-specific context. 
 - Read [`docs/README.md`](docs/README.md) for start-here references, the decision log, and source rules.
 - Read [`docs/product-vision.md`](docs/product-vision.md), [`docs/hackathon.md`](docs/hackathon.md), and [`docs/project-setup.md`](docs/project-setup.md) before planning or changing the product.
 - Rove is a temporary hackathon demo name, not a cleared brand. The current direction is student social connection and trip planning; administrative features are later possibilities.
-- The public prototype is a provisional demo slated for substantial redesign. Do not treat its layout as a requirement or assume a GitHub-to-Sites deployment integration exists.
+- Consult `docs/project-setup.md` for the current app, prototype, hosting and deployment details; verify the relevant branch and deployment before making assumptions.
 
 ## Git workflow and publishing
 
@@ -28,7 +28,7 @@ Follow AGENTS.md §"Git workflow and decision boundaries" exactly. Key points fo
 - Inspect the checkout, branch, and local changes before acting.
 - Create focused branches from current `origin/main`; never switch or overwrite an active checkout with unrelated work without asking.
 - Commit focused changes locally to prepare reviewable results; explain what changed and what remains open.
-- **Do not push, open pull requests, or merge to `main` without explicit user authorization for that specific action.** Completing implementation is not authorization to publish or merge.
+- Follow the current shared Git workflow and the user's instructions for branch pushes and pull requests. Obtain explicit authorization before merging to `main` or pushing directly to `main`.
 - Never force-push or discard work without explicit authorization.
 
 ## Independent merge review requirement
@@ -60,4 +60,4 @@ See [`docs/hackathon.md`](docs/hackathon.md) for submission deadlines and rules.
 
 ## Project commands
 
-Main has no established install, run, test, or build commands. The separate prototype and its source branch are described in `docs/project-setup.md`; inspect the actual branch and use its documented commands when applicable. Do not invent commands.
+Consult `docs/project-setup.md` and the actual branch for current run, test, build, and deployment instructions. Do not invent commands.

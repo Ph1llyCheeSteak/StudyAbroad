@@ -27,21 +27,19 @@ Our first target users are students currently studying abroad who want to explor
 
 A practical starting segment to investigate is students in several programs in the same host city who are interested in weekend or short trips. This is a proposed focus, not an exclusion of other students or a claim that these users will adopt or pay for the product. The initial buyer and business model remain open questions.
 
-## Candidate focus areas
+## Key features
 
-These are directions to validate, not implemented features or a committed scope.
+These reflect the direction in the [TRVLR one-pager](https://docs.google.com/document/d/1vsYGyfvnKLjt5Aeze34ywLzyPZWZ98nN3zM9n-giGsE). They are proposed features to validate, not claims of implemented functionality.
 
-1. **Meet other students:** Help students discover potential travel companions across programs based on shared plans and preferences.
-2. **Plan trips together:** Help a group coordinate destinations, dates, and the details needed to move from interest to a shared plan.
-3. **Travel within a budget:** Explore ways to communicate budget expectations and identify opportunities to share costs.
-4. **Build trust:** Explore appropriate privacy controls, reporting, and ways for students to feel comfortable connecting with others.
+1. **Student connections:** Browse profiles, meet peers across programs, and find travel companions.
+2. **Group trip planning:** Coordinate itineraries, budgets, calendars, and shared costs; explore letting students register trips with program staff.
+3. **Places to stay:** Discover and plan hostel and Airbnb bookings together, informed by other students' experiences. The booking experience and any third-party integrations remain to be determined.
+4. **Student recommendations:** Share and find practical advice about destinations, housing, restaurants, and local life.
 
 ## Ideas to explore later
 
-- Calendar synchronization, itineraries, and expense tracking.
-- Student recommendations for destinations, hostels, restaurants, housing, and local activities.
-- Profiles and connections for meetups or academic collaboration.
-- Identity or student-status verification, with careful consideration of privacy and accessibility.
+- Privacy controls, reporting, and identity or student-status verification to help students feel comfortable connecting.
+- Connections for local meetups or academic collaboration.
 - Program information, contacts, and optional sharing of trip plans with staff.
 - Safety information and alerts, subject to appropriate sources and operational support.
 

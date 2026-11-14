@@ -34,3 +34,14 @@ body{padding-top:var(--header-height);padding-bottom:calc(var(--nav-clearance) +
 .bottom-nav a.active{color:var(--ink);border:0}.bottom-nav svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .bottom-nav .compass-link{overflow:visible;gap:3px;transform:translateY(-13px)}.compass-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;border:4px solid #fff;box-shadow:0 4px 12px #123b402e}.compass-icon svg{width:29px;height:29px}.compass-link.active .compass-icon{background:var(--blue)}
 @media(max-width:700px){.top{height:var(--header-height);padding:0 20px}.profile span:last-child{display:block}.bottom-nav{gap:0}.bottom-nav a{font-size:10px}}
+
+/* Consistent floating navigation across the app. */
+body:has(.explore-globe) .top{background:#fff;color:var(--ink);border-color:#e9e8e1}
+body:has(.explore-globe) .logo span:first-child{color:var(--blue)}
+body:has(.explore-globe) .dot{color:var(--brown)}
+.bottom-nav{height:54px;padding:2px 14px;border-radius:20px;background:#fff}
+.bottom-nav a{gap:1px;color:#536d65;font-size:10px}
+.bottom-nav .compass-link{transform:none;gap:0}
+.compass-icon{width:64px;height:64px;border:4px solid #fff;background:var(--ink)}
+.compass-icon svg{width:34px;height:34px}
+.compass-link.active .compass-icon{background:var(--ink)}

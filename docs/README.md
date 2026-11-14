@@ -6,7 +6,8 @@ Status: initial working drafts, 2026-11-13. Repository files become shared with 
 
 - [Product vision](product-vision.md): problem, audience, product direction, scope and validation.
 - [Hackathon brief](hackathon.md): schedule, constraints and judging priorities for the short build.
-- [Merge review](merge-review.md): independent review, candidate-merge testing and visual evidence process.
+- [Merge review](merge-review.md): proportionate review and release checks.
+- [Maggie's working style guide](brand-style-guide-draft.txt): approved palette and typography study plus draft visual direction.
 - [Team workstreams](team-workstreams.md): proposed ownership, shared contracts and integration checkpoints.
 - [Foundation contract](foundation-contract.md): runnable app, routes, shared fixtures, persistence, and extension points.
 - [Project setup](project-setup.md): repository, current tools, workflow and unknowns.
@@ -38,3 +39,4 @@ When the team makes a durable decision, update the relevant reference in the sam
 - **2026-11-13 — Brand ownership:** Maggie is developing the color palette. Maggie is the owner of the palette work.
 
 - **2026-11-14 — Approved palette study:** Maggie approved these five colors for continued design work: deep teal `#194F59`, ocean blue `#398BA1`, muted green `#47745E`, warm brown `#A96F4D`, and sand `#F3E9DC`. Other brand guidance remains a draft. Source: [Maggie's working visual direction guide](https://github.com/Ph1llyCheeSteak/StudyAbroad/blob/a757910e23d6495db50dc885055a7751abf4bce9/docs/brand-style-guide-draft.txt).
+- **2026-11-14 — Typography:** Maggie selected Fredoka for headings and Outfit for navigation, buttons and body text for continued design work; the remaining style guide is a draft. See the [preview](design/font-hybrid-preview.html).

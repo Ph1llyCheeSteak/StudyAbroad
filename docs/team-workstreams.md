@@ -1,6 +1,6 @@
 # TRVLR team workstreams and integration plan
 
-Status: proposed for team alignment, 2026-11-13. Assignments are starting suggestions, not claims about anyone's preferences, skills, availability or agreement. Exchange ownership freely before building. The team is developing the brand separately; use neutral placeholders until that work is ready. Build only within the hackathon rules in [hackathon.md](hackathon.md).
+Status: proposed for team alignment, 2026-11-13. Feature assignments are starting suggestions, not claims about anyone's preferences, skills, availability or agreement. Exchange ownership freely before building. Maggie is developing the brand palette; use neutral placeholders until that work is ready. Build only within the hackathon rules in [hackathon.md](hackathon.md).
 
 ## Shared goal and scope
 
@@ -13,7 +13,7 @@ The following four ownership areas are distinct but deliberately converge on tha
 | Philippe | 1. Foundation, data and integration | One runnable app with shared data contracts, fixtures, routes and integrated demo. |
 | Andrew (@drewfr) | 2. Student identity and profiles | A reusable student profile and clear, privacy-conscious profile flow. |
 | @jwlsiii | 3. Trip planning and participation | Create, view and join a trip using the shared contract. |
-| Maggie (@mmehl07) | 4. Discovery and student recommendations | Find relevant students and trips, and show useful destination advice. Coordinate with whoever owns branding. |
+| Maggie (@mmehl07) | 4. Discovery and student recommendations; brand palette | Find relevant students and trips, show useful destination advice, and develop the palette separately. Feature assignment remains a proposal. |
 
 ## 1. Foundation, data and integration — Philippe
 
@@ -66,7 +66,7 @@ Before parallel coding, Workstream 1 should publish a short contract change for 
 
 ## Sequence and checkpoints
 
-1. **Align now:** review ownership, current competing README proposal, user journey and what is genuinely feasible before the deadline. Assign the brand owner explicitly and agree one stack and initial contract. Avoid treating PR #2 as merged until it is reviewed.
+1. **Align now:** review ownership, current competing README proposal, user journey and what is genuinely feasible before the deadline. Coordinate with Maggie on the brand palette and agree one stack and initial contract. Avoid treating PR #2 as merged until it is reviewed.
 2. **Foundation first, then parallel:** publish runnable shell, fixtures and contract; owners build behind agreed interfaces on separate feature branches. Each PR states files owned, dependencies, test steps and known mock behavior.
 3. **Integrate early:** merge a small vertical slice, then attach profiles, trips and discovery to the same IDs and operations. Resolve mismatched assumptions immediately rather than waiting for the final hour. Use PRs and the review process, not direct pushes to `main`.
 4. **Test and prepare:** run relevant checks and a real-browser walkthrough of the integrated merge candidate; record and inspect video for app changes where available. Exercise narrow-screen layouts, empty/error states, shared participant updates and reload behavior. Use the [merge review](merge-review.md) process; incomplete verification is not a pass.

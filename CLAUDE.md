@@ -26,7 +26,7 @@ Apply the fetched guidance alongside the active branch's task-specific context. 
 Follow AGENTS.md §"Git workflow and decision boundaries" exactly. Key points for Claude:
 
 - Inspect the checkout, branch, and local changes before acting.
-- Create focused branches from current `origin/main`; never switch or overwrite an active checkout with unrelated work without asking.
+- Reuse the assigned personal branch under the six-branch layout in `AGENTS.md`; never switch or overwrite an active checkout with unrelated work without asking.
 - Commit focused changes locally to prepare reviewable results; explain what changed and what remains open.
 - Follow the current shared Git workflow and the user's instructions for branch pushes and pull requests. Obtain explicit authorization before merging to `main` or pushing directly to `main`.
 - Never force-push or discard work without explicit authorization.

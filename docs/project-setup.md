@@ -11,7 +11,7 @@ The sample student journey is city → recommendation → save to sample trip �
 ## Git and Vercel
 
 - Feature work happens on team branches and is proposed to [team/rove-integration](https://github.com/Ph1llyCheeSteak/StudyAbroad/tree/team/rove-integration); see [team-workstreams.md](team-workstreams.md) for assignments.
-- [Vercel project dashboard](https://vercel.com/rove17/rove-study-abroad) is connected to the GitHub repository. Pushing a branch can trigger a preview deployment; preview URLs may require Vercel authentication. Access to GitHub alone does not imply Vercel dashboard or preview access.
+- [Vercel project dashboard](https://vercel.com/rove17/rove-study-abroad) is connected to the GitHub repository. Pushing a branch can trigger a preview deployment; anyone with the preview URL can view it. Access to GitHub alone does not imply access to the Vercel dashboard.
 - Production domain: [rove-study-abroad.vercel.app](https://rove-study-abroad.vercel.app/). Vercel is configured to deploy `main`. The current production deployment was manually promoted from `codex/rove-app-foundation` (commit `f6d0826`); a subsequent successful `main` deployment can replace it. Once this app is merged to `main`, reviewed app changes merged there should deploy automatically. Verify the deployment and public URL after each release; failures do not become successful updates.
 - The older [Sites demo](https://rove-student-journeys.epicthyme518.chatgpt.site/) is separate; GitHub pushes do not update it. Do not use it as evidence of the Vercel deployment.
 - A custom domain is not required for the demo. Do not add secrets, personal research data or real student information to this public repository.

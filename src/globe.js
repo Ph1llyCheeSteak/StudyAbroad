@@ -3,7 +3,7 @@ const COUNTRY_ZOOM=3, CITY_ZOOM=12, MAX_ZOOM=256;
 
 export function mountGlobe(cities,onSelect){
  const canvas=document.querySelector('#earth'),ctx=canvas.getContext('2d'),status=document.querySelector('#location-status'),chooser=document.querySelector('#city-chooser'),labels=document.querySelector('#city-labels'),stage=document.querySelector('.globe-stage');
- let rotation=[-2.1686,-41.3874,0],land=null,detail=null,boundaries=[],zoom=1,drag=null,frame=0,pointers=new Map(),pinch=null,settleTimer=0,focusPending=null;
+ let rotation=[-2.1686,-41.3874,0],land=null,detail=null,detailedWorld=null,boundaries=[],zoom=1,drag=null,frame=0,pointers=new Map(),pinch=null,settleTimer=0,focusPending=null;
  const pixelRatio=Math.min(3,Math.max(2,window.devicePixelRatio||1));
  canvas.width=Math.round(700*pixelRatio);canvas.height=Math.round(700*pixelRatio);ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
  const projection=d3.geoOrthographic().translate([350,350]).clipAngle(90).precision(.15),path=d3.geoPath(projection,ctx),graticule=d3.geoGraticule10();
@@ -16,7 +16,7 @@ export function mountGlobe(cities,onSelect){
   ctx.beginPath();path({type:'Sphere'});ctx.fillStyle='#398ba1';ctx.fill();
   ctx.beginPath();path(graticule);ctx.strokeStyle='rgba(169,211,211,.20)';ctx.lineWidth=.7;ctx.stroke();
   if(land){
-   const nearby=d3.geoDistance([-4,40],center())<.5,shape=detail&&zoom>=4&&nearby?detail:land;
+   const nearby=d3.geoDistance([-4,40],center())<.5,shape=detailedWorld&&zoom>=4&&nearby?detailedWorld:land;
    ctx.beginPath();path(shape);ctx.fillStyle='#47745e';ctx.fill();
    ctx.beginPath();path(shape);ctx.strokeStyle='rgba(226,239,220,.40)';ctx.lineWidth=Math.max(.35,.8/(canvas.getBoundingClientRect().width/700));ctx.stroke();
   }
@@ -44,12 +44,18 @@ export function mountGlobe(cities,onSelect){
  }
  function countryAt(point){return countryLabels.find(item=>contains(item.feature.geometry,point))}
  function scheduleCountryFocus(point){if(!point||focusPending)return;const item=countryAt(point);if(!item)return;focusPending=item;clearTimeout(settleTimer);settleTimer=setTimeout(()=>{if(focusPending===item)focusCountry(item)},220)}
+ function prepareDetailedWorld(){
+  if(!land||!detail)return;
+  // The detailed asset covers only these countries; retain the rest of the world.
+  const replaced=new Set(['ESP','PRT','MAR','FRA','AND','DZA']);
+  detailedWorld={type:'FeatureCollection',features:[...land.features.filter(f=>!replaced.has(f.properties.ADM0_A3)),...detail.features]};
+ }
  draw();
  Promise.all([fetch('./vendor/countries.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}),fetch('./vendor/city-boundaries.json').then(r=>{if(!r.ok)throw Error();return r.json()})]).then(([l,b])=>{
   land=l;boundaries=b;countryLabels=l.features.map(feature=>{const p=feature.properties,point=[Number(p.LABEL_X),Number(p.LABEL_Y)],button=document.createElement('button');button.type='button';button.className='globe-country';button.textContent=p.NAME_EN||p.NAME;button.setAttribute('aria-label','Zoom into '+button.textContent);const item={feature,point,button,rank:Number(p.LABELRANK)||9};button.onclick=()=>focusCountry(item);labels.append(button);return item}).filter(x=>x.button.textContent&&x.point.every(Number.isFinite)).sort((a,b)=>a.rank-b.rank);
-  draw();
+  prepareDetailedWorld();draw();
  }).catch(()=>{status.textContent='Map details unavailable. Use Find a city.'});
- fetch('./vendor/iberia-50m.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{detail=data;draw()}).catch(()=>{});
+ fetch('./vendor/iberia-50m.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{detail=data;prepareDetailedWorld();draw()}).catch(()=>{});
  canvas.addEventListener('pointerdown',e=>{cancelAnimationFrame(frame);clearTimeout(settleTimer);focusPending=null;pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.setPointerCapture(e.pointerId);if(pointers.size===1)drag={x:e.clientX,y:e.clientY,rotation:[...rotation]};if(pointers.size===2){let p=[...pointers.values()];pinch={distance:Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]),zoom,point:center()};drag=null}});
  canvas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2&&pinch){let p=[...pointers.values()],d=Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1]);zoom=clampZoom(pinch.zoom*Math.pow(d/pinch.distance,1/(1+.22*Math.log2(pinch.zoom))));draw()}else if(drag){rotation=[drag.rotation[0]+(e.clientX-drag.x)*.45/Math.sqrt(zoom),Math.max(-89,Math.min(89,drag.rotation[1]-(e.clientY-drag.y)*.45/Math.sqrt(zoom))),0];draw()}});
  function release(e){if(drag&&Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6){const box=canvas.getBoundingClientRect(),p=projection.invert([(e.clientX-box.left)*700/box.width,(e.clientY-box.top)*700/box.height]);if(p){if(zoom>=CITY_ZOOM){const i=boundaries.findIndex(g=>contains(g,p));if(i>=0)select(cities[i])}else{const country=countryAt(p);if(country)focusCountry(country)}}}if(pinch&&pinch.zoom<COUNTRY_ZOOM&&zoom>=COUNTRY_ZOOM)scheduleCountryFocus(pinch.point);pointers.delete(e.pointerId);drag=null;pinch=null}

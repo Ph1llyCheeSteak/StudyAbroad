@@ -10,8 +10,6 @@
 /* Explore: deeper tones drawn from the team's teal, ocean, green, brown and sand palette. */
 body:has(.explore-globe){background:#123b43;color:#f3e9dc}
 body:has(.explore-globe) .top{background:#194f59;border-color:#398ba1;color:#f3e9dc}
-body:has(.explore-globe) nav a{color:#c5dedb}
-body:has(.explore-globe) nav a.active{color:#fff;border-color:#d69a6d}
 body:has(.explore-globe) .logo span:first-child{color:#83c3cf}
 body:has(.explore-globe) .dot{color:#df9a6e}
 body:has(.explore-globe) .eyebrow{color:#e1a87d}

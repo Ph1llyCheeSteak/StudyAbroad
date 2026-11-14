@@ -119,3 +119,13 @@ body:has(#globe-view:not([hidden])){overflow:hidden}
 .bottom-nav a.active:not(.compass-link) svg{background:#dcebe2;border-radius:50%;padding:5px;width:32px;height:32px}
 .bottom-nav .compass-icon{background:#dce6df;color:#637b73;box-shadow:none}
 .bottom-nav .compass-link.active .compass-icon{background:#194f59;color:#fff;box-shadow:0 4px 12px #123b402e}
+
+/* Equal-weight navigation: outlined by default, filled only for the current destination. */
+.bottom-nav{height:62px;grid-template-columns:repeat(3,1fr);grid-template-rows:minmax(0,1fr)}
+.bottom-nav a,.bottom-nav a.active,body:has(.explore-globe) .bottom-nav a,body:has(.explore-globe) .bottom-nav a.active{color:#194f59;border:0;gap:3px}
+.bottom-nav .compass-link{transform:none;min-height:0;gap:3px}
+.bottom-nav .compass-icon,.bottom-nav .compass-link.active .compass-icon{width:24px;height:24px;flex:0 0 24px;background:none;color:inherit;border:0;border-radius:0;box-shadow:none}
+.bottom-nav svg,.bottom-nav .compass-icon svg,.bottom-nav a.active:not(.compass-link) svg{width:24px;height:24px;padding:0;background:none;border-radius:0;stroke-width:1.8}
+.bottom-nav .nav-icon-filled{display:none}
+.bottom-nav a.active .nav-icon-outline{display:none}
+.bottom-nav a.active .nav-icon-filled{display:block}

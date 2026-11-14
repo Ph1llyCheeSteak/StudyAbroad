@@ -31,4 +31,4 @@ When the team makes a durable decision, update the relevant reference in the sam
 
 - **2026-11-13 — Current direction:** prioritize a student social platform for trip planning and connecting across programs. Administrative features are possible later, not the initial focus. Source: team direction in this chat.
 - **2026-11-13 — Draft setup:** use these repository documents as a proposed shared working reference. Brand palette, first release scope, technical stack, owner and approval process remain open.
-- **2026-11-13 — Brand ownership:** another teammate is developing the color palette. No draft palette in this repository is approved; add the team's chosen brand guidance when available.
+- **2026-11-13 — Brand ownership:** Maggie is developing the color palette. No draft palette in this repository is approved; add the team's chosen brand guidance when available.

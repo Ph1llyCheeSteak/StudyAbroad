@@ -9,13 +9,16 @@ Status: current observations and proposed workflow, 2026-11-13. Verify environme
 - This checkout has a README and initial shared documentation; the app, framework, backend, hosting and deployment process have not been selected.
 - Git is available. Node and pnpm were available in the Codex runtime when checked; npm was not on PATH. Teammates should verify their own tooling once a stack is chosen.
 
-## Proposed Git workflow
+## Team Git workflow
 
-1. Fetch and inspect the latest `main` and local changes before beginning work. Preserve existing uncommitted work. Base new feature branches on a `main` that contains the shared references; existing branches need to incorporate that commit through a normal merge or rebase when safe.
-2. Make focused changes on a descriptive feature branch. Use `codex/` for branches created by Codex unless the team chooses another convention.
-3. Define acceptance criteria, implement, and run checks appropriate to the change. Document any missing checks or assumptions.
-4. Open a pull request for changes to `main`, use the independent review process in [merge review](merge-review.md), and resolve conflicts with care. Do not assume deployment or merge authorization from permission to develop.
-5. Keep product and technical decisions current in the shared references.
+The team works in local checkouts and uses GitHub to share changes. Agents handle routine Git coordination so teammates can focus on the product and decide when work is shared or merged.
+
+1. At the start of work, the agent checks the branch and local changes, fetches `origin/main`, and reads the latest shared guidance. It preserves existing work and reports when it cannot check the remote.
+2. For a new task, the agent creates a focused branch from current `origin/main` when safe. It uses a separate worktree or asks if switching the current checkout would risk unrelated work. For an existing branch, it checks relevant upstream changes and handles safe synchronization; it escalates conflicts requiring a decision.
+3. The agent implements and verifies the work, keeps decisions in the shared references, and can make focused local commits to prepare a reviewable result. It explains the result and any unresolved risks.
+4. The teammate decides whether to push a branch, open a pull request, merge into `main`, push directly to `main`, or wait. An explicit instruction authorizes the specified action; implementing a task alone does not authorize publication or merging. Before a merge, follow [merge review](merge-review.md) and applicable repository protections. GitHub access depends on each person's permissions.
+
+Agents must not discard others' work, force-push, or bypass protections without explicit authorization. Branch and worktree choices are routine agent decisions; product direction and consequential tradeoffs belong to the team.
 
 The repository has no established install, run, test or build commands yet. Add verified instructions and prerequisite versions once an application stack exists; do not invent commands.
 

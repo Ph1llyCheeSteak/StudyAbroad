@@ -13,6 +13,14 @@ At the start of project work, when network access is available, run `git fetch o
 - Check the actual repository, branch, existing changes, and task-specific sources. Do not assume a framework, backend, hosting, launch, or feature exists.
 - Distinguish confirmed decisions, proposals, and unvalidated assumptions. Use the sources and decision process in `docs/README.md` when context conflicts.
 
+## Git workflow and decision boundaries
+
+- Handle routine Git coordination for the team: inspect the checkout, branch, uncommitted changes and remote; fetch current `main`; explain material risks in plain language. Preserve teammates' and users' work. If offline, continue safely with local information and say what could not be checked.
+- For new work, use a focused branch based on current `origin/main` when the checkout is clean and switching is safe. Do not switch, pull, merge, rebase or overwrite an active checkout with unrelated changes; use a separate worktree or ask when the safe path is unclear. On an existing task branch, check for relevant upstream changes and incorporate them only when safe and appropriate; explain conflicts that require a human decision. Never force-push or discard work without explicit authorization.
+- Make sensible routine Git choices and perform requested development and verification without making teammates manage commands. Commit focused changes when useful to prepare a reviewable result, preserving unrelated work; explain what changed and what remains.
+- Before publishing changes to GitHub, present the branch, destination and meaningful changes and obtain the user's decision to push, open a pull request, or wait. Before merging into `main` or pushing directly to `main`, obtain explicit authorization for that action. An instruction to implement work alone is not permission to publish or merge; a clear instruction to perform a particular action is authorization for that action. Follow the independent merge review process even when merge is authorized. Never bypass repository protections.
+- Ask the user for creative and consequential product choices, unresolved conflicts, or material risks; make routine implementation and Git decisions independently. Report failures and the next action in plain language.
+
 ## Collaboration
 
 - Work within the requested scope, preserve others' changes, and coordinate shared files when work is delegated. Use independent branches or worktrees where appropriate; integrate and verify contributions before reporting completion.

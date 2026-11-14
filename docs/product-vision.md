@@ -1,6 +1,6 @@
-# TRVLR product vision
+# Rove product vision
 
-Status: working draft for team review, 2026-11-13. TRVLR is a working name. This is a product hypothesis, not a description of an implemented app.
+Status: working draft for team review, 2026-11-13. Rove is a temporary hackathon demo name. This is a product hypothesis, not a description of an implemented app. The later [team discussion](https://github.com/Ph1llyCheeSteak/StudyAbroad/issues/7#issuecomment-6882239850) proposes map-based city communities connected to trips; those details await team decisions.
 
 ## Problem
 

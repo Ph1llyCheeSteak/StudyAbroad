@@ -5,9 +5,17 @@ Status: current observations and proposed workflow, 2026-11-13. Verify environme
 ## Repository
 
 - GitHub: [Ph1llyCheeSteak/StudyAbroad](https://github.com/Ph1llyCheeSteak/StudyAbroad) (public when last checked).
-- Default branch: `main`. The current local checkout tracks `origin/main`.
+- Default branch: `main`. Individual checkouts and feature branches may track other branches; inspect the current checkout before changing it.
 - This checkout has a README and initial shared documentation; the app, framework, backend, hosting and deployment process have not been selected.
 - Git is available. Node and pnpm were available in the Codex runtime when checked; npm was not on PATH. Teammates should verify their own tooling once a stack is chosen.
+
+## Rove demo and redesign baseline
+
+- [Public Rove prototype](https://rove-student-journeys.epicthyme518.chatgpt.site/) is a temporary hackathon demo. It uses fictional data and browser-local changes; it is not a shared multi-user service.
+- Its predecessor source is on GitHub in [`codex/trvlr-foundation`](https://github.com/Ph1llyCheeSteak/StudyAbroad/tree/codex/trvlr-foundation), with the static demo in `site/`, shared demo data in `src/`, and tests in `tests/`. These files are not currently on `main`.
+- The live site is a separate Sites deployment. The temporary Rove rename was published through its own Sites source repository; it was not committed to the GitHub prototype branch. GitHub pushes do not automatically update the live URL. Publishing requires an explicit coordinated Sites deployment of the desired source; do not assume a GitHub-to-Sites integration exists.
+- The user intends a substantial redesign of the prototype. Use the [city-community and trip-planning proposal](https://github.com/Ph1llyCheeSteak/StudyAbroad/issues/7#issuecomment-6882239850) as a starting point for team alignment: map to city boards, recommendations and trips. The discussion remains a proposal; choose and document the demo's actual journey and data contracts before parallel implementation. Do not treat the prototype layout as a requirement or delete its history.
+- Coordinate one shared implementation branch, interfaces, ownership and deployment owner before parallel work. Feature branches should converge through the team's review workflow. Keep the existing public demo available until a replacement is tested and deliberately deployed.
 
 ## Team Git workflow
 

@@ -1,6 +1,8 @@
-# TRVLR team workstreams and integration plan
+# Rove team workstreams and integration plan
 
-Status: proposed for team alignment, 2026-11-13. Feature assignments are starting suggestions, not claims about anyone's preferences, skills, availability or agreement. Exchange ownership freely before building. Maggie is developing the brand palette; use neutral placeholders until that work is ready. Build only within the hackathon rules in [hackathon.md](hackathon.md).
+Status: proposed for team alignment, 2026-11-13; updated 2026-11-14 for the temporary demo name. Feature assignments are starting suggestions, not claims about anyone's preferences, skills, availability or agreement. Exchange ownership freely before building. Maggie's approved palette is recorded in [shared references](README.md); other visual decisions remain under review. Build only within the hackathon rules in [hackathon.md](hackathon.md).
+
+The earlier layout is a provisional demo and is slated for substantial redesign. Revisit these proposed workstreams against the [city-community discussion](https://github.com/Ph1llyCheeSteak/StudyAbroad/issues/7#issuecomment-6882239850) and agree shared contracts before parallel development; its detailed features have not yet been approved.
 
 ## Shared goal and scope
 

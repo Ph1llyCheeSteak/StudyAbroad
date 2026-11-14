@@ -16,7 +16,9 @@ Status: initial working drafts, 2026-11-13. Repository files become shared with 
 
 For active project work, use the relevant repository reference as the working record. Current user instructions take precedence; a more recent team decision should be recorded in the relevant file and reviewed through the team's normal Git workflow. Older Google Docs remain research and brainstorming sources rather than automatically updating these files. If sources conflict or a decision is unclear, surface the difference rather than silently inventing agreement.
 
-Working name: **TRVLR**, used in the existing one-pager; final naming is unconfirmed. The team subsequently chose student social connection and trip planning as the initial focus. This supersedes the older documents' equal emphasis on staff administration for the purpose of these drafts.
+Temporary hackathon demo name: **Rove**. The final brand remains undecided; Rove is already used by other travel products. TRVLR is the historical name in the one-pager. The team prioritizes student social connection and trip planning over staff administration.
+
+The [team's city communities and trip-planning discussion](https://github.com/Ph1llyCheeSteak/StudyAbroad/issues/7#issuecomment-6882239850) is a working proposal, not an approved specification. It explores a mobile-first map leading to city boards, student recommendations, and connected trip planning. Agree on one feasible end-to-end journey before implementing its unapproved details.
 
 Source material:
 
@@ -29,6 +31,7 @@ When the team makes a durable decision, update the relevant reference in the sam
 
 ### Decision log
 
+- **2026-11-14 — Temporary demo name and redesign:** use Rove for the current hackathon demo; revisit the name later. The existing demo's design is provisional and is to be substantially redesigned around the team's updated direction. Preserve history and distinguish the issue proposal from agreed requirements. See [project setup](project-setup.md) for the live demo and source locations.
 - **2026-11-13 — Current direction:** prioritize a student social platform for trip planning and connecting across programs. Administrative features are possible later, not the initial focus. Source: team direction in this chat.
 - **2026-11-13 — Draft setup:** use these repository documents as a proposed shared working reference. First release scope, technical stack, owner and approval process remain open.
 - **2026-11-13 — Brand ownership:** Maggie is developing the color palette. Maggie is the owner of the palette work.

@@ -1,8 +1,8 @@
-# Travel Abroad
+# Rove (temporary demo name)
 
-For the working product vision, hackathon brief, project setup, and agent guidance, see [shared project references](docs/README.md). TRVLR is the working name used in the team's one-pager; final naming remains open.
+For the working product vision, hackathon brief, project setup, and agent guidance, see [shared project references](docs/README.md). Rove is a temporary demo name; final naming remains open. TRVLR is the historical name used in the team's one-pager.
 
-Travel Abroad is an early-stage concept for a student-centered social platform that helps students studying abroad meet one another and plan trips together.
+Rove is an early-stage concept for a student-centered social platform that helps students studying abroad meet one another and plan trips together.
 
 ## Problem statement
 

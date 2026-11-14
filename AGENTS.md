@@ -8,7 +8,8 @@ At the start of project work, when network access is available, run `git fetch o
 
 ## Context
 
-- TRVLR is a working name for a mobile-first social and trip-planning concept for students abroad. The current direction prioritizes student connections and independent trips; administrative workflows are later possibilities.
+- Rove is the temporary hackathon demo name for a mobile-first social and trip-planning concept for students abroad; it is not a cleared final brand. The current direction prioritizes student connections and independent trips; administrative workflows are later possibilities.
+- The public Rove prototype is a provisional demo, not the approved design for the next build. Read the redesign and hosting notes in `docs/project-setup.md` and the current working proposal linked from `docs/README.md` before designing or implementing.
 - This is a short hackathon build. Read `docs/hackathon.md`, prioritize one complete demonstrable student journey, and preserve project history. Confirm current event rules and deadlines in Discord.
 - Check the actual repository, branch, existing changes, and task-specific sources. Do not assume a framework, backend, hosting, launch, or feature exists.
 - Distinguish confirmed decisions, proposals, and unvalidated assumptions. Use the sources and decision process in `docs/README.md` when context conflicts.

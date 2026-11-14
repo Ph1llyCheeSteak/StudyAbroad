@@ -91,3 +91,21 @@ body:has(.explore-globe) .demo-note{background:#0e3037;color:#c5dedb}
 
 /* Keep labels subtle as city outlines come into view. */
 .globe-city{font-size:10px;padding:4px 7px;border-width:1px;box-shadow:0 1px 5px #0006;white-space:nowrap}
+
+/* Let the globe grow beyond the screen during zoom. */
+body:has(#globe-view:not([hidden])){overflow:hidden}
+#globe-view{position:relative;min-height:calc(100dvh - var(--header-height,70px))}
+#globe-view .globe-heading{position:relative;z-index:2;pointer-events:none}
+#globe-view .globe-stage{position:fixed;inset:var(--header-height,70px) 0 0;width:100vw;height:calc(100dvh - var(--header-height,70px));max-height:none;overflow:hidden;z-index:0}
+.globe-frame{position:absolute;left:50%;top:50%;width:min(68vh,650px,100vw);aspect-ratio:1;transform:translate(-50%,-50%);transition:width .35s ease;}
+.globe-stage.is-zoomed .globe-frame{width:max(145vw,145vh)}
+.globe-frame canvas{display:block;width:100%;height:100%;touch-action:none}
+.globe-frame .city-labels{position:absolute;inset:0}
+#globe-view .find-wrap{position:absolute;top:16px;left:20px;z-index:3}
+#globe-view .globe-controls,#globe-view .map-credit{position:relative;z-index:2;pointer-events:none}
+#globe-view .map-credit a{pointer-events:auto}
+#globe-view .globe-controls{position:fixed;bottom:calc(95px + env(safe-area-inset-bottom));left:10px;right:10px}
+#globe-view .map-credit{position:fixed;bottom:calc(75px + env(safe-area-inset-bottom));left:10px;right:10px}
+@media (prefers-reduced-motion:reduce){.globe-frame{transition:none}}
+
+#globe-view .globe-stage{max-width:none}

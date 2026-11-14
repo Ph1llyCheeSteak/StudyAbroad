@@ -19,7 +19,7 @@ Status: current observations and proposed workflow, 2026-11-13. Verify environme
 
 The repository has no established install, run, test or build commands yet. Add verified instructions and prerequisite versions once an application stack exists; do not invent commands.
 
-Repository guidance travels with Git commits. A different clone, branch or worktree sees only its checked-out version; agents that do not support `AGENTS.md` need to be explicitly pointed to the shared references. See [the hackathon brief](hackathon.md) for project-history and event rules.
+Repository guidance travels with Git commits. A different clone, branch or worktree sees only its checked-out version. Once a branch contains the instruction in `AGENTS.md`, it directs Codex to fetch and read the latest committed guidance from `origin/main` without changing the branch. Existing branches must first incorporate that instruction; agents that do not support `AGENTS.md` need explicit direction. An offline fetch cannot guarantee current guidance, and this process does not automatically synchronize branch files. See [the hackathon brief](hackathon.md) for project-history and event rules.
 
 ## Access and privacy
 

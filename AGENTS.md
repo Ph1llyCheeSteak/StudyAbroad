@@ -2,6 +2,10 @@
 
 Start with `docs/README.md`, then read the relevant product vision, hackathon brief, and project setup before planning or changing this project. Follow the user's current instructions and any more specific applicable guidance. Repository documents describe the current project direction; drafts and hypotheses are not approved decisions.
 
+## Current shared guidance across branches
+
+At the start of project work, when network access is available, run `git fetch origin main` and read the latest committed `AGENTS.md` and `docs/README.md` from `origin/main` using `git show origin/main:AGENTS.md` and `git show origin/main:docs/README.md`. Read any relevant referenced files from `origin/main` the same way. Apply the current guidance alongside the active branch's task-specific context; do not merge, rebase, overwrite files, or discard changes merely to refresh guidance. If fetch fails, use the local guidance and report that it may be stale. This instruction only works once a branch contains it; tools that do not read AGENTS.md need explicit direction.
+
 ## Context
 
 - TRVLR is a working name for a mobile-first social and trip-planning concept for students abroad. The current direction prioritizes student connections and independent trips; administrative workflows are later possibilities.

@@ -13,3 +13,7 @@ The demo journey is Explore → city board → recommendation → save to the sa
 - All state is browser-local via localStorage, with in-memory fallback if storage is unavailable; there is no login, backend, shared state, or network loading. Save reports storage failure. Votes and people are illustrative, not real community activity. No loading indicator is needed for synchronous fixtures. Missing routes show a recovery link.
 
 The palette uses Maggie's approved color study; remaining branding is provisional. This is a foundation for team review, not a finalized contract or a production service.
+
+## Roves planning prototype (2026-11-14)
+
+Planning and sample quests use the existing browser-local trip records and stable city/place IDs. `createTrip({cityId, title, dates, placeIds})` returns `{id, saved}`; `addTripParticipant(tripId, studentId)` adds a sample friend locally and returns whether persistence succeeded. No invitation, booking, or notification is sent. The city pin popup lets users choose among plans in that city when saving a place. Quest ideas are fictional suggestions, not claims that real students took those trips. Coordinate changes to these shared functions and trip fields in integration reviews.

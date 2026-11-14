@@ -30,5 +30,7 @@ When the team makes a durable decision, update the relevant reference in the sam
 ### Decision log
 
 - **2026-11-13 — Current direction:** prioritize a student social platform for trip planning and connecting across programs. Administrative features are possible later, not the initial focus. Source: team direction in this chat.
-- **2026-11-13 — Draft setup:** use these repository documents as a proposed shared working reference. Brand palette, first release scope, technical stack, owner and approval process remain open.
-- **2026-11-13 — Brand ownership:** Maggie is developing the color palette. No draft palette in this repository is approved; add the team's chosen brand guidance when available.
+- **2026-11-13 — Draft setup:** use these repository documents as a proposed shared working reference. First release scope, technical stack, owner and approval process remain open.
+- **2026-11-13 — Brand ownership:** Maggie is developing the color palette. Maggie is the owner of the palette work.
+
+- **2026-11-14 — Approved palette study:** Maggie approved these five colors for continued design work: deep teal `#194F59`, ocean blue `#398BA1`, muted green `#47745E`, warm brown `#A96F4D`, and sand `#F3E9DC`. Other brand guidance remains a draft. Source: [Maggie's working visual direction guide](https://github.com/Ph1llyCheeSteak/StudyAbroad/blob/a757910e23d6495db50dc885055a7751abf4bce9/docs/brand-style-guide-draft.txt).

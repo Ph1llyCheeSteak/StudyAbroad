@@ -23,7 +23,7 @@ export function mountGlobe(cities,onSelect){
   if(zoom>=COUNTRY_ZOOM)boundaries.forEach(g=>{if(!g)return;const lines=g.type==='Polygon'?g.coordinates:g.type==='MultiPolygon'?g.coordinates.flat():[];ctx.beginPath();path({type:'MultiLineString',coordinates:lines});ctx.strokeStyle='rgba(246,235,208,.85)';ctx.lineWidth=Math.max(.3,1.4/(canvas.getBoundingClientRect().width/700));ctx.stroke()});
   const occupied=[],box=canvas.getBoundingClientRect(),scale=box.width/700;
   [...countryLabels].sort((a,b)=>d3.geoDistance(a.point,center())-d3.geoDistance(b.point,center())).forEach(({button,point})=>{
-   button.hidden=true;if(zoom>=CITY_ZOOM||d3.geoDistance(point,center())>1.42)return;
+   button.hidden=true;if(zoom<2||zoom>=CITY_ZOOM||d3.geoDistance(point,center())>1.42)return;
    const p=projection(point);if(!p||p[0]<0||p[0]>700||p[1]<0||p[1]>700)return;
    const x=p[0]*scale,y=p[1]*scale,w=Math.max(24,button.textContent.length*6.3),h=16;
    if(occupied.some(a=>Math.abs(a.x-x)<(a.w+w)/2+8&&Math.abs(a.y-y)<(a.h+h)/2+4))return;

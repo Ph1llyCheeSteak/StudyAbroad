@@ -14,3 +14,15 @@ test('joining updates one shared trip, survives reload, and is idempotent', () =
   store.reset();
   assert.equal(store.getTrip('trip-1').participantIds.includes('student-1'), false);
 });
+
+test('trip creation validates dates and preserves a consistent creator', () => {
+  const cache = new Map();
+  const storage = { getItem: key => cache.get(key) ?? null, setItem: (key, value) => cache.set(key, value) };
+  const store = createDemoStore(storage);
+  assert.throws(() => store.createTrip({ title: 'Test', destination: 'Paris', startDate: '2027-02-30', endDate: '2027-03-01' }), /valid dates/);
+  const trip = store.createTrip({ title: ' Paris ', destination: ' Paris ', startDate: '2027-02-01', endDate: '2027-02-02', budgetAmount: 42 });
+  assert.equal(trip.title, 'Paris');
+  assert.deepEqual(trip.participantIds, [store.getCurrentStudent().id]);
+  assert.deepEqual(createDemoStore(storage).getTrip(trip.id), trip);
+  assert.throws(() => store.leaveTrip(trip.id), /creator/);
+});

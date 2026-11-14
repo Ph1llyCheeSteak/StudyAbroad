@@ -178,5 +178,14 @@ body:has(#city-screen:not([hidden])) .demo-note{display:none}
 .filter-menu label{display:flex;align-items:center;gap:8px;padding:9px 0;font-size:14px;cursor:pointer}
 .filter-menu input{width:17px;height:17px;accent-color:#194f59}
 
+/* Keep search compact until it is selected. */
+.city-search{box-sizing:border-box;width:44px;height:44px;gap:0;overflow:hidden;cursor:text;transition:width .18s ease}
+.city-search svg{flex:0 0 20px;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.city-search:focus-within{width:min(260px,calc(100vw - 40px));gap:8px}
+#globe-view .city-search #find-city{width:0;opacity:0;flex:1}
+#globe-view .city-search:focus-within #find-city{width:auto;opacity:1}
+#globe-view.has-started .globe-heading{visibility:hidden}
+@media (prefers-reduced-motion:reduce){.city-search{transition:none}}
+
 /* Reserve scrollbar space when the full-screen globe locks page scrolling. */
 html { scrollbar-gutter: stable; }

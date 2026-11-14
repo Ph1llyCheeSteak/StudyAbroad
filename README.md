@@ -1,49 +1,64 @@
 # Travel Abroad
 
-Travel Abroad is an early-stage concept for helping students and study abroad program staff stay informed, connected, and prepared throughout a study abroad experience.
+For the working product vision, hackathon brief, project setup, and agent guidance, see [shared project references](docs/README.md). TRVLR is the working name used in the team's one-pager; final naming remains open.
 
-## The problem
+Travel Abroad is an early-stage concept for a student-centered social platform that helps students studying abroad meet one another and plan trips together.
 
-Studying abroad should expand students' horizons, but managing the experience is fragmented. Students must navigate information from multiple sources, connect with unfamiliar people, and communicate travel plans. Program staff need a reliable way to know where students are and when they may need support.
+## Problem statement
+
+Students studying abroad often want to explore beyond their host city, but finding compatible travel companions across programs and coordinating affordable trips can be difficult. Plans and conversations may be scattered across group chats and other tools, making it hard to discover who is interested in the same destination, dates, and budget and to turn that interest into a shared plan.
+
+These are hypotheses to validate with students, not established findings.
 
 ## Product vision
 
-Bring essential program information, student connections, and travel coordination into one place. The initial product should focus on a small number of useful workflows that students and staff can understand and use without constant instruction.
+Help students find people to travel with and move from a shared idea to an organized trip. The experience should be welcoming, easy to use, and useful even when a student does not already know a group of travelers. Sharing expenses or finding companions may make trips more affordable, but savings are not guaranteed.
 
-### People we hope to serve
+The initial focus is student connection and trip planning. Administrative workflows, including sharing plans with program staff, may be explored later if students and programs find them useful. The product should not be assumed to replace a program's official travel registration or safety processes.
 
-- **Students:** Find program information, meet other students, and plan and register trips.
-- **Program staff:** Share important information and understand students' travel plans so they can provide support.
+## Initial customer profile
+
+Our first target users are students currently studying abroad who want to explore their host region, particularly those who:
+
+- Are looking for travel companions beyond their existing friends or program.
+- Want to coordinate independent trips around compatible destinations, dates, interests, and budgets.
+- Use group chats, social media, or separate travel tools to find people and make plans.
+- Care about feeling comfortable meeting other students and understanding what information they share.
+
+A practical starting segment to investigate is students in several programs in the same host city who are interested in weekend or short trips. This is a proposed focus, not an exclusion of other students or a claim that these users will adopt or pay for the product. The initial buyer and business model remain open questions.
 
 ## Candidate focus areas
 
-These are proposed directions, not implemented features. The team should validate and prioritize them before committing to a scope.
+These are directions to validate, not implemented features or a committed scope.
 
-1. **Program information and readiness:** Give students one place to find announcements, events, requirements, and a pre-departure checklist.
-2. **Trip planning and registration:** Help students plan trips and share their plans with program staff, with an incentive to register.
-3. **Student connections and support:** Help students connect across programs and find relevant contacts and safety information.
+1. **Meet other students:** Help students discover potential travel companions across programs based on shared plans and preferences.
+2. **Plan trips together:** Help a group coordinate destinations, dates, and the details needed to move from interest to a shared plan.
+3. **Travel within a budget:** Explore ways to communicate budget expectations and identify opportunities to share costs.
+4. **Build trust:** Explore appropriate privacy controls, reporting, and ways for students to feel comfortable connecting with others.
 
-## Ideas to explore
+## Ideas to explore later
 
-- Calendar synchronization and budget planning.
-- Matching students to share trip costs and discover destinations, hostels, and restaurants.
-- A contacts directory for program administrators, fellow students, and emergency services.
-- Safety alerts for local conflicts, weather, and travel disruptions.
-- Student profiles for meeting up, making travel plans, or collaborating on school projects.
-- Identity verification for safety.
-- Student-contributed housing tips, local advice, and practical answers, with voting or other ways to surface useful information.
+- Calendar synchronization, itineraries, and expense tracking.
+- Student recommendations for destinations, hostels, restaurants, housing, and local activities.
+- Profiles and connections for meetups or academic collaboration.
+- Identity or student-status verification, with careful consideration of privacy and accessibility.
+- Program information, contacts, and optional sharing of trip plans with staff.
+- Safety information and alerts, subject to appropriate sources and operational support.
 
-## Design questions
+## Questions to validate
 
-- Which workflows matter most to students and program staff?
-- What would motivate students to register trips and keep their plans current?
-- How can the experience stay intuitive without a staff member teaching every step?
-- What privacy, consent, and access controls are appropriate for student profiles, identity verification, and travel information?
-
-## Project status
-
-This repository is at the concept stage. Features, architecture, setup instructions, and implementation details have not yet been established.
+- How do students currently find travel companions and organize their last few trips? Where does that process break down?
+- Which matters most when choosing companions: destination, dates, budget, interests, existing connections, or something else?
+- Would students use a separate platform alongside their existing group chats and travel tools? What would make it worth returning to?
+- How many active students in one place and time are needed for discovery to be useful?
+- What makes students feel safe meeting someone from another program, and what information are they comfortable sharing?
+- Who would pay for the product, if anyone, and what value would justify payment?
+- Could sharing plans with program staff be useful without making the student experience feel like surveillance? What official requirements would still apply?
 
 ## Competitive landscape
 
-Terra Dotta is one existing product to research as the team evaluates the study abroad management space.
+Students can already coordinate in group chats and use products such as Wanderlog for collaborative trip planning or ScholarRoam for student connections and travel discovery. Terra Dotta and Via offer institutional study abroad and travel-management tools. We need to understand where these options meet students' needs and where a focused cross-program social experience could offer distinct value.
+
+## Project status
+
+This repository is at the concept stage. The problem, customer profile, features, business model, architecture, and implementation details still need validation and decisions.

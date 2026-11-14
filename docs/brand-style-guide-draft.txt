@@ -1,0 +1,46 @@
+CANVA SOURCE
+StudyAbroad Visual Guide: https://www.canva.com/d/A3mNdPpvXmEbeFw
+This is a reference to the live Canva design; changes are not automatically synchronized to this branch. The Canva design remains the source of truth for its own contents.
+
+TRVLR — WORKING STYLE GUIDE & DESIGN REQUIREMENTS
+Draft for Maggie and the Study Abroad team | November 14, 2026
+
+STATUS
+Maggie approved the five palette study colors and selected the Fredoka and Outfit typography pairing on November 14, 2026 for continued design work. The rest of this guide remains a draft. TRVLR is a working name.
+
+APPROVED DESIGN WORKFLOW
+When Maggie approves a design, save the approved source files and any export assets in the Study Abroad project folder so she can sync them with GitHub after the software installation is complete. Keep editable source alongside exports, use descriptive filenames and preserve earlier versions when useful. Do not treat draft designs as approved. The GitHub repository is Ph1llyCheeSteak/StudyAbroad; follow the team's branch and review process for synchronization.
+
+BRAND FEEL
+Student-led, curious, welcoming, social and a little adventurous. The experience should feel like a collection of real study-abroad moments: weekend train rides, new friends, cafés, historic streets, coastlines and mountain trips. Make people and their stories the focus. Avoid a corporate dashboard feeling.
+
+APPROVED PALETTE STUDY — five colors
+Deep teal        #194F59  Strong headings and dark surfaces.
+Ocean blue       #398BA1  Fresh water and social accents.
+Muted green      #47745E  Primary action color and nature accents.
+Warm brown       #A96F4D  Earthy emphasis and editorial details.
+Sand             #F3E9DC  Warm panels and background accents.
+
+SUPPORTING COLORS — proposed
+Travel teal      #236A75  Secondary brand color and gradient anchor.
+Sage             #E6EEE4  Soft cards, tags and supporting backgrounds.
+Off-white        #FAF9F5  Main page background.
+Ink              #173C42  Primary text.
+
+GRADIENT
+The current downloadable study uses deep teal #194F59 → travel teal #236A75 → ocean blue #398BA1 → muted green #7BA18C. Use as a full-bleed hero, banner or accent; retain sufficient contrast for any text placed over it. This is a working option, not a final approved brand decision.
+
+TYPOGRAPHY & UI
+Use Fredoka for large headings and Outfit for navigation, buttons, and body text. These are existing Google Fonts, paired for a playful but polished feel. See docs/design/font-hybrid-preview.html for the visual example; it loads the fonts from Google Fonts. Use generous spacing, rounded cards, clear labels, expressive short headings and warm conversational language. Make layouts mobile-first. Use legible contrast, visible keyboard focus and labels that do not rely on color alone.
+
+IMAGERY & MOTIFS
+Feature student portraits and candid travel moments when licensed or supplied imagery becomes available. Use recognizable but restrained visual cues: landmark outlines, city skylines, coastlines, ocean waves, mountains, tickets, maps and handwritten travel notes. Tie graphics to a real destination or travel activity rather than using decorative generic globes. Favor varied card sizes and editorial compositions over a grid of identical dashboard widgets. Mockup illustrations and example people/places should be labeled as sample content.
+
+PROFILE FEATURE — CONCEPT
+A student can create a social profile with a photo, name, home school, host city, program, interests and short prompts. A profile detail card can feel as expressive as a dating-app profile, while serving platonic student connections. Give viewers a clear Message action; no swipe-left or swipe-right interaction. Provide an edit entry point and thoughtful choices about what to share. Do not imply messages, identity verification or profile storage work until implemented.
+
+TRIP REGISTRATION — CONCEPT
+Provide fields for destination, departure date, return date (or duration), and travel companions. Add an optional notes field if useful. Clearly explain how shared information is used once the team decides; do not imply that submitting a plan satisfies official program reporting requirements. Do not imply that a draft form stores or sends information.
+
+DEMO AND COORDINATION
+The repository describes an early-stage, mobile-first student connection and trip-planning concept for a hackathon. Proposed features and ownership remain subject to team alignment. Use sample content honestly and coordinate shared style tokens and any app integration with the foundation owner. The accompanying mockup is a design exploration, not a working app or an approved design.

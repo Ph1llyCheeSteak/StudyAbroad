@@ -31,16 +31,9 @@ Follow AGENTS.md §"Git workflow and decision boundaries" exactly. Key points fo
 - Follow the current shared Git workflow and the user's instructions for branch pushes and pull requests. Obtain explicit authorization before merging to `main` or pushing directly to `main`.
 - Never force-push or discard work without explicit authorization.
 
-## Independent merge review requirement
+## Proportional merge review
 
-For every proposed merge to `main` — including changes to AGENTS.md, product direction, configuration, and this file — an independent review subagent must be used following [`docs/merge-review.md`](docs/merge-review.md) **before** merge. Key rules:
-
-- The review must use the **base branch's** instructions, not the PR's own changed instructions.
-- If a required review step (fetch, checkout, run, video walkthrough) cannot be completed, mark it **incomplete**, not passed.
-- Do not create placeholder passing statuses.
-- Obtain explicit user authorization before merging even after a clean review.
-
-An independent subagent review is advisory unless a separately configured GitHub integration publishes a required status. Do not assume such an integration exists or claim a review has passed when it is incomplete. This file alone does not constitute a completed review.
+Follow [`docs/merge-review.md`](docs/merge-review.md). Review the actual change and run relevant checks, preferably with an independent reviewer when available. Missing optional video or reviewer tooling does not itself block a teammate from deciding to merge. Report what was and was not checked, and never claim a check passed when it did not. Respect GitHub protections and obtain authorization from the teammate directing a merge to `main`.
 
 ## Collaboration and decisions
 

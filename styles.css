@@ -5,3 +5,22 @@
 .explore-globe{max-width:880px;margin:auto;padding:42px 24px 70px;text-align:center}.globe-heading h1{font-size:clamp(38px,5vw,58px);margin:12px 0}.globe-heading p,.globe-controls p{color:#71817c;font-size:14px}.globe-stage{width:min(100%,490px);margin:4px auto 0}.globe-stage canvas{display:block;width:100%;height:auto;touch-action:none;cursor:grab}.globe-stage canvas:active{cursor:grabbing}.globe-controls .primary{padding:12px 18px}.globe-controls p{min-height:22px}.city-picker{max-width:600px;margin:42px auto 0;text-align:left}.city-picker-head{display:flex;justify-content:space-between;align-items:center}.city-picker h2{font-size:27px;margin:8px 0 18px}.city-list{border-top:1px solid #dce5dd}.city-row{display:flex;align-items:stretch;border-bottom:1px solid #dce5dd}.center-city{width:48px;border:0;background:transparent;color:var(--blue);font-size:22px}.city-row a{flex:1;display:flex;justify-content:space-between;align-items:center;padding:16px 8px}.city-row strong,.city-row small{display:block}.city-row small{color:#71817c;margin-top:4px}@media(max-width:700px){.explore-globe{padding:30px 20px 55px}.globe-stage{max-width:380px}.city-picker{margin-top:30px}}
 
 .map-credit{font-size:10px;color:#71817c}.map-credit a{text-decoration:underline}
+
+/* Explore: deeper tones drawn from the team's teal, ocean, green, brown and sand palette. */
+body:has(.explore-globe){background:#123b43;color:#f3e9dc}
+body:has(.explore-globe) .top{background:#194f59;border-color:#398ba1;color:#f3e9dc}
+body:has(.explore-globe) nav a{color:#c5dedb}
+body:has(.explore-globe) nav a.active{color:#fff;border-color:#d69a6d}
+body:has(.explore-globe) .logo span:first-child{color:#83c3cf}
+body:has(.explore-globe) .dot{color:#df9a6e}
+body:has(.explore-globe) .eyebrow{color:#e1a87d}
+body:has(.explore-globe) .globe-heading p,body:has(.explore-globe) .globe-controls p,body:has(.explore-globe) .map-credit{color:#c5dedb}
+body:has(.explore-globe) .globe-controls .primary{background:#a96f4d;color:#fff}
+body:has(.explore-globe) .globe-controls .primary:hover{background:#be8058}
+body:has(.explore-globe) .city-picker .pill{background:#47745e;color:#fff}
+body:has(.explore-globe) .city-list{border-color:#47745e}
+body:has(.explore-globe) .city-row{background:#194f59;border-color:#47745e;padding:0 8px}
+body:has(.explore-globe) .city-row:hover{background:#225f69}
+body:has(.explore-globe) .city-row small{color:#bed7d0}
+body:has(.explore-globe) .center-city{color:#e1a87d}
+body:has(.explore-globe) .demo-note{background:#0e3037;color:#c5dedb}

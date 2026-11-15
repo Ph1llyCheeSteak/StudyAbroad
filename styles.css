@@ -322,3 +322,6 @@ html { scrollbar-gutter: stable; }
 #place-filters.filter-menu label,#place-filters.filter-menu label:has(input:checked){width:auto;height:auto;border:0;border-radius:0;background:transparent;color:#194f59}
 #place-filters.filter-menu label:focus-within{outline:none}
 #place-filters.filter-menu input:focus-visible{outline:2px solid #398ba1;outline-offset:2px}
+
+/* Keep trip planning first and saved items optional. */
+.saved-collection summary{cursor:pointer;font:600 19px Fredoka,sans-serif;list-style:none}.saved-collection summary:after{content:"⌄";float:right}.saved-collection[open] summary:after{content:"⌃"}.saved-collection summary span{font:600 13px Outfit,sans-serif;opacity:.75}.saved-collection[open] summary{margin-bottom:14px}.rove-ideas-link{margin:6px 0 14px}

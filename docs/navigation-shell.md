@@ -1,0 +1,3 @@
+# Shared navigation for new pages
+
+Use the existing header and bottom navigation from `index.html` on future pages so the account menu and app navigation remain consistent. Reuse the `.top` and `.bottom-nav` markup, the shared `styles.css`, and the `src/account-menu.js` and `src/nav-icons.js` modules. On standalone pages, point the navigation links to `./index.html#roves`, `./index.html#explore`, and `./index.html#crew`, and mark the current destination with `active` where applicable. Keep page-specific styles scoped so they do not override the shared navigation. The city and venue posts pages provide examples.

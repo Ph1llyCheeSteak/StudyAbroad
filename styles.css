@@ -243,6 +243,43 @@ body:has(.roves-page) .demo-note{background:#0e3037;color:#c5dedb}
 .rove-empty{color:#c5dedb}
 @media(max-width:650px){.roves-page{padding:30px 16px 100px}.rove-grid{grid-template-columns:1fr}.rove-form-row{grid-template-columns:1fr;gap:0}.rove-section-head{align-items:flex-start}.rove-tabs{display:flex}.rove-tabs button{flex:1;min-width:0}.rove-plan,.quest-card,.rove-form{padding:20px}}
 .popup-trip-picker{display:block;width:100%;max-width:240px;margin:10px 0 0;padding:8px;border:1px solid #7da89c;border-radius:5px;background:#fff;color:#194f59}
+#city-screen:not([hidden]){opacity:1;transition:opacity .2s ease}
+#city-screen.city-arriving:not([hidden]){opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){#city-screen:not([hidden]){transition:none}}
 
 /* Reserve scrollbar space when the full-screen globe locks page scrolling. */
 html { scrollbar-gutter: stable; }
+
+.rove-form textarea{display:block;width:100%;padding:11px;border:1px solid #7da89c;border-radius:8px;background:#103d43;color:white;font:inherit}.rove-form fieldset{margin:18px 0;border:1px solid #47745e;border-radius:10px}.rove-form .plan-check{display:flex;align-items:center;gap:8px}.rove-form .plan-check input{width:auto;margin:0}.rove-form a{color:#e6c4a3}body:has(.crew-page){background:#123b43}.crew-title h1,.crew-title p,.crew-page>.crew-disclosure{color:#f3e9dc}
+
+.invite-person{display:flex!important;align-items:center;gap:12px;padding:10px;background:#f7faf7;color:#194f59!important;border-radius:10px}.invite-person span:nth-child(2){flex:1}.invite-person small{display:block;font-weight:400}.invite-person input{width:auto!important}.saved-collection{padding:18px;margin:20px 0;background:#194f59;border-radius:12px}.saved-collection a{color:#f3e9dc}.quest-votes{display:flex;gap:14px;align-items:center;margin:14px 0}.quest-comments input{width:100%;padding:8px}.quest-comments p{overflow-wrap:anywhere}
+
+/* Quest interaction controls */
+.quest-card{display:flex;flex-direction:column;gap:14px}.quest-card h3,.quest-card p,.quest-card .quest-time{margin:0}.quest-card .quest-stops{margin:0}.quest-votes{display:inline-flex;align-items:center;gap:10px;margin:0;align-self:flex-start;padding:4px;border:1px solid #6e9990;border-radius:24px;background:#103b42}.quest-votes button{width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:#f3e9dc;font-size:20px;cursor:pointer}.quest-votes button:hover,.quest-votes button:focus-visible{background:#398ba1}.quest-comments{border-top:1px solid #47745e;padding-top:16px}.quest-comments p{background:#103b42;border-radius:10px;padding:10px 12px;margin:0 0 10px;line-height:1.45}.quest-comment label{display:block;font-size:13px;font-weight:700;color:#c5dedb}.quest-comment input{display:block;width:100%;box-sizing:border-box;margin:7px 0 10px;padding:12px;border:1px solid #7da89c;border-radius:9px;background:#103d43;color:#fff;font:inherit}.quest-comment input::placeholder{color:#abc6bd}.quest-card>button[data-rove-action="use-quest"]{align-self:flex-start;margin-top:auto}.quest-card .rove-secondary{margin:0}.rove-form fieldset p{line-height:1.5}.rove-form fieldset label.plan-check{display:flex}.rove-form fieldset a{color:#f3d0b4}
+/* Local-only demo: entry to the Barcelona citywide sample feed. */
+#city-all-posts{position:absolute;top:calc(78px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:850;display:inline-flex;justify-content:center;align-items:center;min-height:48px;width:min(320px,calc(100% - 38px));padding:12px 18px;background:#194f59;color:#fff;border:2px solid #f3e9dc;border-radius:9px;box-shadow:0 4px 14px #102e3690;font:700 14px Outfit,sans-serif;text-decoration:none;text-align:center}#city-all-posts[hidden]{display:none}#city-all-posts:focus-visible{outline:3px solid #e4ac7d;outline-offset:3px}
+
+/* Quests echo the city post feed: light cards and a vertical vote rail. */
+.quest-card{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:18px;row-gap:12px;background:#fff;color:#194f59;border:1px solid #dce6dc;border-radius:8px;box-shadow:none;padding:20px 20px 20px 0;overflow:hidden}.quest-card>*{grid-column:2}.quest-card .rove-tag{color:#a96f4d}.quest-card h3{color:#194f59}.quest-card p{color:#345a53}.quest-card .quest-time{color:#72877c}.quest-card .quest-stops a{color:#194f59;border-color:#dce6dc}.quest-card .quest-votes{grid-column:1;grid-row:1 / span 8;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-start;gap:5px;background:#edf3ec;border:0;border-radius:0;padding:12px 5px;margin:-20px 0 -20px}.quest-card .quest-votes button{color:#194f59;border-radius:5px;font-size:19px}.quest-card .quest-votes button:hover,.quest-card .quest-votes button:focus-visible{background:#d6e9d5}.quest-card .quest-comments{border-color:#dce6dc}.quest-card .quest-comment label{color:#47745e}.quest-card .quest-comment input{background:#fff;color:#194f59;border:1px solid #bed0c2}.quest-card .quest-comment input::placeholder{color:#72877c}.quest-card .quest-comments p{background:#edf3ec;color:#194f59}.quest-card .rove-secondary{border-color:#47745e;color:#194f59}.quest-card .rove-secondary:hover{background:#edf3ec}.quest-card .rove-card-mark{color:#a96f4d}
+
+.rove-wrap > .rove-primary[data-rove-action="new-quest"]{margin:0 0 22px}.quest-card .quest-votes button[data-rove-action="upvote"]{color:#398e5c}.quest-card .quest-votes button[data-rove-action="downvote"]{color:#bf4c51}.quest-card .quest-votes button[aria-pressed="true"][data-rove-action="upvote"]{background:#d6e9d5}.quest-card .quest-votes button[aria-pressed="true"][data-rove-action="downvote"]{background:#f4dcdc}
+
+/* Explore: distinguish real map labels from available sample guides. */
+.globe-country{font-size:10px;font-weight:600;letter-spacing:.025em;color:#f6f1de;text-shadow:0 1px 4px #153d35,0 0 8px #153d35}
+.world-city-label{position:absolute;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;color:#f7f1de;font:500 10px Outfit,sans-serif;text-shadow:0 1px 3px #102e32,0 0 5px #102e32}
+.world-city-label::before{content:'';display:inline-block;width:4px;height:4px;margin:0 5px 2px 0;border-radius:50%;background:#f7f1de}
+.world-city-label[hidden]{display:none}
+.globe-city{display:flex;align-items:center;gap:5px;min-height:30px;padding:5px 9px;border:1px solid #f8f4e9;border-radius:999px;background:#194f59;color:#fff;font:700 11px Outfit,sans-serif;box-shadow:0 3px 12px #0b3339a0;text-shadow:none;z-index:2}
+.globe-city[hidden]{display:none}
+.guide-pin-dot{width:var(--guide-dot,8px);height:var(--guide-dot,8px);flex:none;border-radius:50%;background:#e5a779;box-shadow:0 0 0 3px #e5a77950}
+.guide-tray{position:fixed;z-index:5;left:50%;bottom:calc(108px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(510px,calc(100vw - 32px));padding:12px 14px;background:rgba(11,50,56,.92);border:1px solid #87b6a9;border-radius:16px;box-shadow:0 8px 24px #0a292f55;color:#f6f1e7;text-align:left;backdrop-filter:blur(12px)}
+.guide-tray-heading{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:9px}
+.guide-tray-heading strong{font:600 15px Fredoka,sans-serif}.guide-tray-heading span{font-size:10px;color:#bbd6cf}
+.guide-tray-cities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.guide-tray-cities button{min-width:0;padding:8px 9px;border:1px solid #6c9d91;border-radius:9px;background:#215a60;color:#fff;text-align:left;cursor:pointer}
+.guide-tray-cities button:hover,.guide-tray-cities button:focus-visible{background:#397d7a}
+.guide-tray-cities button span,.guide-tray-cities button small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.guide-tray-cities button span{font-size:12px;font-weight:700}.guide-tray-cities button small{margin-top:3px;font-size:10px;color:#c5e0d5}
+#globe-view .globe-controls{bottom:calc(220px + env(safe-area-inset-bottom))}
+#globe-view .map-credit{bottom:calc(91px + env(safe-area-inset-bottom));font-size:9px}
+@media(max-width:480px){.guide-tray{bottom:calc(101px + env(safe-area-inset-bottom));padding:10px}.guide-tray-heading strong{font-size:14px}.guide-tray-cities button{padding:7px}.guide-tray-cities button span{font-size:11px}#globe-view .globe-controls{bottom:calc(206px + env(safe-area-inset-bottom));font-size:11px}}

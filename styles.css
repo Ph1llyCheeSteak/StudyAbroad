@@ -307,3 +307,13 @@ html { scrollbar-gutter: stable; }
 #place-filters.filter-menu{width:190px;padding:10px;gap:0;display:flex;flex-direction:column;align-items:stretch}#place-filters[hidden]{display:none}#place-filters .filter-heading{padding:4px 8px 7px;color:#597870;font-size:11px;font-weight:700}#place-filters label{display:flex;align-items:center;gap:9px;min-height:38px;padding:7px 8px;color:#194f59;font-size:13px;font-weight:600;cursor:pointer}#place-filters input{position:static;opacity:1;width:16px;height:16px;accent-color:#47745e}
 .review-popup{max-width:270px}.leaflet-popup-content{min-width:0}.leaflet-popup-content .place-photo{margin:-2px -2px 10px}.place-photo img{display:block;width:100%;height:130px;object-fit:cover;border-radius:8px;background:#e5ede4}.place-photo figcaption{margin-top:4px;color:#617b72;font-size:9px;line-height:1.3}.place-photo figcaption a{color:#4c7064;text-decoration:underline}.review-popup h3{margin:4px 0 7px}.review-popup .popup-votes{margin-top:10px}.review-popup .popup-votes button:first-child{color:#39855e}.review-popup .popup-votes button:nth-child(3){color:#b84c49}.review-popup .popup-votes button[aria-pressed=true]{color:#fff}.review-popup .popup-votes span{font-size:11px;color:#54736a;font-weight:700}
 .detail-art.has-photo{display:block;height:auto;background:none}.detail-art.has-photo .place-photo{margin:0}.detail-art.has-photo .place-photo img{height:250px;border-radius:10px}.detail-art.has-photo .place-photo figcaption{font:11px/1.4 Outfit,sans-serif;color:#617b72}
+
+.city-suggestions-heading{padding:8px 12px 4px;color:#526c64;font-size:11px;font-weight:700;letter-spacing:.02em}
+.city-chooser{max-height:min(320px,calc(100dvh - 160px))}
+#globe-view:has(.find-wrap:focus-within) .globe-heading{visibility:hidden}
+.city-suggestions-heading[hidden]{display:none}
+.city-chooser button span,.city-chooser button small{display:block}
+.city-chooser button small{margin-top:3px;color:#526c64;font-size:11px;font-weight:400}
+.city-chooser.is-searching button small{display:none}
+#globe-view .globe-controls{bottom:calc(95px + env(safe-area-inset-bottom))}
+#globe-view .map-credit{bottom:calc(75px + env(safe-area-inset-bottom))}

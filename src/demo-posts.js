@@ -25,6 +25,7 @@ if(scope==='venue'){
  if(currentPlace.id!=='sample-bcn-nightlife'){postList.replaceChildren();addSamples(currentPlace)}
 }else{
  document.querySelector('.banner h1').textContent=currentCity.name+' posts';document.querySelector('.banner .eyebrow').textContent=currentCity.name.toUpperCase()+' / CITY BOARD';document.title=currentCity.name+' · City posts';
+ const guide=document.createElement('a');guide.href='./index.html#explore/'+encodeURIComponent(currentCity.id);guide.className='board-guide-link';guide.textContent='Browse '+currentCity.name+' student picks →';document.querySelector('.banner').append(guide);
  postList.querySelectorAll('.post').forEach(post=>{if(post.dataset.place!=='sample-bcn-nightlife'||currentCity.id!=='barcelona')post.remove()});
  const cityPlaces=places.filter(place=>place.cityId===currentCity.id);cityPlaces.filter(place=>place.id!=='sample-bcn-nightlife').forEach(addSamples);
  const select=document.getElementById('post-place');select.replaceChildren(...cityPlaces.map(place=>new Option(place.name,place.id)));

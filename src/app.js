@@ -1,5 +1,5 @@
 import {openCity} from './city-map.js';
-import {renderCrew,handleCrewClick,handleCrewSubmit,openTripChat,openStudentProfile} from './crew.js';
+import {renderCrew,handleCrewClick,handleCrewSubmit,openTripChat,openStudentProfile} from './crew.js?v=profile-1';
 import {mountGlobe} from './globe.js';
 import {renderProvider} from './provider.js';
 import {placePhoto,photoElement} from './place-photos.js';

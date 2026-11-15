@@ -31,3 +31,7 @@ Board post snapshots are stored in `rove-demo-v1.boardPosts` with `board:` IDs, 
 ## Pitch journey iteration (2026-11-14)
 
 Crew opens on connections; accepting a fictional request makes that student selectable in trip planning. A trip conversation links back to its specific plan. Board-post snapshots can be added to a plan and its sharing preview. All interactions remain browser-local simulations; no messages or invitations are sent.
+
+## Trip planning handoff
+
+Saved board posts link to `#roves/new/:encodedPostId`, opening a new plan with its city and saved post selected. This only prepares a local draft; the user must create the plan. Participant chips link to `#crew/profile/:studentId`, a fictional student preview. No real profile, invitation or message is created.

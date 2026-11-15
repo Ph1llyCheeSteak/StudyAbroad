@@ -272,14 +272,12 @@ html { scrollbar-gutter: stable; }
 .globe-city{display:flex;align-items:center;gap:5px;min-height:30px;padding:5px 9px;border:1px solid #f8f4e9;border-radius:999px;background:#194f59;color:#fff;font:700 11px Outfit,sans-serif;box-shadow:0 3px 12px #0b3339a0;text-shadow:none;z-index:2}
 .globe-city[hidden]{display:none}
 .guide-pin-dot{width:var(--guide-dot,8px);height:var(--guide-dot,8px);flex:none;border-radius:50%;background:#e5a779;box-shadow:0 0 0 3px #e5a77950}
-.guide-tray{position:fixed;z-index:5;left:50%;bottom:calc(108px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(510px,calc(100vw - 32px));padding:12px 14px;background:rgba(11,50,56,.92);border:1px solid #87b6a9;border-radius:16px;box-shadow:0 8px 24px #0a292f55;color:#f6f1e7;text-align:left;backdrop-filter:blur(12px)}
-.guide-tray-heading{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:9px}
-.guide-tray-heading strong{font:600 15px Fredoka,sans-serif}.guide-tray-heading span{font-size:10px;color:#bbd6cf}
-.guide-tray-cities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-.guide-tray-cities button{min-width:0;padding:8px 9px;border:1px solid #6c9d91;border-radius:9px;background:#215a60;color:#fff;text-align:left;cursor:pointer}
-.guide-tray-cities button:hover,.guide-tray-cities button:focus-visible{background:#397d7a}
-.guide-tray-cities button span,.guide-tray-cities button small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.guide-tray-cities button span{font-size:12px;font-weight:700}.guide-tray-cities button small{margin-top:3px;font-size:10px;color:#c5e0d5}
-#globe-view .globe-controls{bottom:calc(220px + env(safe-area-inset-bottom))}
-#globe-view .map-credit{bottom:calc(91px + env(safe-area-inset-bottom));font-size:9px}
-@media(max-width:480px){.guide-tray{bottom:calc(101px + env(safe-area-inset-bottom));padding:10px}.guide-tray-heading strong{font-size:14px}.guide-tray-cities button{padding:7px}.guide-tray-cities button span{font-size:11px}#globe-view .globe-controls{bottom:calc(206px + env(safe-area-inset-bottom));font-size:11px}}
+.city-suggestions-heading{padding:8px 12px 4px;color:#526c64;font-size:11px;font-weight:700;letter-spacing:.02em}
+.city-chooser{max-height:min(320px,calc(100dvh - 160px))}
+#globe-view:has(.find-wrap:focus-within) .globe-heading{visibility:hidden}
+.city-suggestions-heading[hidden]{display:none}
+.city-chooser button span,.city-chooser button small{display:block}
+.city-chooser button small{margin-top:3px;color:#526c64;font-size:11px;font-weight:400}
+.city-chooser.is-searching button small{display:none}
+#globe-view .globe-controls{bottom:calc(95px + env(safe-area-inset-bottom))}
+#globe-view .map-credit{bottom:calc(75px + env(safe-area-inset-bottom))}

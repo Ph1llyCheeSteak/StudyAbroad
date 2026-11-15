@@ -23,3 +23,7 @@ Planning and sample quests use the existing browser-local trip records and stabl
 `#provider` is an illustrative program view accessible from the account menu. Its fixed example engagement counts are fictional and are not derived from real users or connected to analytics. It links to the shared `barcelona-afternoon` sample quest at `#roves/quests`; students can use that existing quest to create a local trip. This is not an operating provider portal.
 
 Each Roves plan offers a `Share trip` dialog that reads that plan's existing city, dates, place IDs and participant IDs from `rove-demo-v1`. It previews separately selected fields for a trusted contact or program. The choices are temporary; nothing is sent, registered, or stored by the dialog. No messages or live location are included. This is a design concept, not a registration integration, emergency service, safety guarantee, or account/permission system. Existing browser-local planning and quest data remain unchanged.
+
+## Board post saving (work in progress)
+
+Board post snapshots are stored in `rove-demo-v1.boardPosts` with `board:` IDs, alongside the existing saved IDs. Roves can display and select these snapshots without replacing existing place IDs. Board-created post content and replies remain tab-session data, so their source links are only reliable in that session. This prototype still needs full trip, refresh, failure and mobile testing before issue #65 is complete.

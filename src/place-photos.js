@@ -3,7 +3,7 @@ const photos={
  bunkers:{file:'bunkers.jpg',alt:'View of Barcelona from Bunkers del Carmel',author:'Alexey Komarov',license:'CC BY-SA 4.0',url:'https://commons.wikimedia.org/wiki/File:Barcelona,_View_from_Bunkers_del_Carmel.jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/'},
  mercat:{file:'market.jpg',alt:'Mercat de Santa Caterina in Barcelona',author:'Sergio Calleja',license:'CC BY-SA 2.0',url:'https://commons.wikimedia.org/wiki/File:Mercat_de_Santa_Caterina_(Barcelona).jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/2.0/'},
  'park-guell':{file:'park-guell.jpg',alt:'View from the terrace at Park Güell',author:'Daniel Kraft',license:'CC BY-SA 3.0',url:'https://commons.wikimedia.org/wiki/File:Parc_G%C3%BCell_Terrace.jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/3.0/'},
- 'sagrada-familia':{file:'sagrada.jpg',alt:'Exterior of the Sagrada Família in Barcelona',author:'Didier Descouens',license:'CC BY-SA 4.0',url:'https://commons.wikimedia.org/wiki/File:Barcelona_-_Exterior_of_the_Apse_of_the_Sagrada_Fam%C3%ADlia_-_Western_exposure.jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/'},
+ 'sagrada-familia':{file:'sagrada-student.jpg',alt:'Two travelers in front of the Sagrada Família in Barcelona',provided:true},
  retiro:{file:'retiro.jpg',alt:'Monument at El Retiro park in Madrid',author:'Carlos Delgado',license:'CC BY-SA 3.0',url:'https://commons.wikimedia.org/wiki/File:Monumento_a_Alfonso_XII_de_Espa%C3%B1a_en_los_Jardines_del_Retiro_-_04.jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/3.0/'},
  'plaza-mayor':{file:'plaza-mayor.jpg',alt:'Plaza Mayor in Madrid',author:'Carlos Delgado',license:'CC BY-SA 3.0',url:'https://commons.wikimedia.org/wiki/File:Plaza_Mayor_de_Madrid_-_01.jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/3.0/'}
 };
@@ -26,7 +26,9 @@ export function photoElement(photo){
  const figure=document.createElement('figure');figure.className='place-photo';
  const img=document.createElement('img');img.src='./assets/place-photos/'+photo.file;img.alt=photo.alt;img.loading='lazy';img.addEventListener('error',()=>{figure.hidden=true},{once:true});
  const caption=document.createElement('figcaption');if(photo.illustrative)caption.append('Illustrative photo, not this place · ');
+ if(photo.provided){caption.textContent='Photo supplied for this sample post';figure.append(img,caption);return figure}
  const source=document.createElement('a');source.href=photo.url;source.target='_blank';source.rel='noopener noreferrer';source.textContent=photo.author+' / Wikimedia Commons';
  const license=document.createElement('a');license.href=photo.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';license.textContent=photo.license;
  caption.append(source,' · ',license,' · resized/cropped');figure.append(img,caption);return figure;
 }
+

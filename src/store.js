@@ -21,3 +21,5 @@ export function updateQuests(fn){const s=readState();s.quests ||= [];s.questVote
 // Board-post snapshots use stable IDs and share the existing local trip store.
 export function boardPosts(){return readState().boardPosts ||= {}}
 export function saveBoardPost(post){const s=readState();(s.boardPosts ||= {})[post.id]=post;const ids=s.savedPosts ||= [];if(!ids.includes(post.id))ids.push(post.id);return persist(s)}
+
+export function updateBoardPost(id,changes){const s=readState(),post=s.boardPosts?.[id];if(!post)return true;Object.assign(post,changes);return persist(s)}

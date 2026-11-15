@@ -17,3 +17,9 @@ export function toggleSaved(id){const a=savedPosts(),i=a.indexOf(id);if(i<0)a.pu
 export function editTrip(id,values){const t=readState().trips.find(x=>x.id===id);if(!t)return false;Object.assign(t,values);return persist(readState())}
 
 export function updateQuests(fn){const s=readState();s.quests ||= [];s.questVotes ||= {};s.questComments ||= {};fn(s);return persist(s)}
+
+// Board-post snapshots use stable IDs and share the existing local trip store.
+export function boardPosts(){return readState().boardPosts ||= {}}
+export function saveBoardPost(post){const s=readState();(s.boardPosts ||= {})[post.id]=post;const ids=s.savedPosts ||= [];if(!ids.includes(post.id))ids.push(post.id);return persist(s)}
+
+export function updateBoardPost(id,changes){const s=readState(),post=s.boardPosts?.[id];if(!post)return true;Object.assign(post,changes);return persist(s)}

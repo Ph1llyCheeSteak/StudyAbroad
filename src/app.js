@@ -3,7 +3,7 @@ import {renderCrew,handleCrewClick,handleCrewSubmit,openTripChat,openStudentProf
 import {mountGlobe} from './globe.js';
 import {renderProvider} from './provider.js';
 import {placePhoto,photoElement} from './place-photos.js';
-import {renderRoves,handleRoveClick,handleRoveSubmit} from './roves.js';
+import {renderRoves,handleRoveClick,handleRoveSubmit} from './roves.js?v=delete-trip-1';
 import {cities,places,students} from './data.js';
 import {readState,savePlace,vote,savedPosts,toggleSaved} from './store.js';
 const app=document.querySelector('#app');let notice='';

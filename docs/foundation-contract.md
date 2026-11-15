@@ -41,3 +41,5 @@ Saved user-created post snapshots update when their title changes. If the source
 ## Demo reset (2026-11-15)
 
 Reloading an app page clears the prototype trip, saved-post and session-post data and returns to Explore. Ordinary navigation between pages retains that data for the current demonstration. This affects only Rove demo storage, not other browser data.
+
+A planned trip can be deleted from its trip card after confirmation. This removes that local trip and its sample conversation while leaving saved Roves and other trips intact.

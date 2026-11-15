@@ -34,6 +34,10 @@ At the start of project work, when network access is available, run `git fetch o
 - Keep the user informed of meaningful progress, decisions, blockers, and risks. Ask when an answer is genuinely required; use judgment for routine choices.
 - Record durable decisions in the relevant shared document, with date and status. Do not treat a single chat or an old brainstorming document as an automatic update to the shared references.
 
+## Cross-page integration
+
+Before changing Explore, city or venue posts, Roves, Quests, Crew, profiles, or shared data, read [issue #56](https://github.com/Ph1llyCheeSteak/StudyAbroad/issues/56) and the current shared contract. Trace the existing feature across all affected surfaces and coordinate with the relevant owners. Reuse and connect existing data and interfaces rather than creating disconnected copies; implement the related integration paths in the same change where practical. Preserve existing data and teammate work, document interface changes and any concrete follow-up, and verify the end-to-end journey. Clearly label fictional and browser-local behavior; do not imply real accounts, messages, or shared state.
+
 ## Criteria
 
 - Define task-specific acceptance criteria before substantial work; distinguish user requirements from proposed criteria.

@@ -27,3 +27,7 @@ Each Roves plan offers a `Share trip` dialog that reads that plan's existing cit
 ## Board post saving (work in progress)
 
 Board post snapshots are stored in `rove-demo-v1.boardPosts` with `board:` IDs, alongside the existing saved IDs. Roves can display and select these snapshots without replacing existing place IDs. Board-created post content and replies remain tab-session data, so their source links are only reliable in that session. This prototype still needs full trip, refresh, failure and mobile testing before issue #65 is complete.
+
+## Pitch journey iteration (2026-11-14)
+
+Crew opens on connections; accepting a fictional request makes that student selectable in trip planning. A trip conversation links back to its specific plan. Board-post snapshots can be added to a plan and its sharing preview. All interactions remain browser-local simulations; no messages or invitations are sent.

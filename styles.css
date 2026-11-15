@@ -252,3 +252,22 @@ html { scrollbar-gutter: stable; }
 
 /* Local-only demo: entry to the Barcelona citywide sample feed. */
 #city-all-posts{position:absolute;top:calc(78px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:850;display:inline-flex;justify-content:center;align-items:center;min-height:48px;width:min(320px,calc(100% - 38px));padding:12px 18px;background:#194f59;color:#fff;border:2px solid #f3e9dc;border-radius:9px;box-shadow:0 4px 14px #102e3690;font:700 14px Outfit,sans-serif;text-decoration:none;text-align:center}#city-all-posts[hidden]{display:none}#city-all-posts:focus-visible{outline:3px solid #e4ac7d;outline-offset:3px}
+/* Explore: distinguish real map labels from available sample guides. */
+.globe-country{font-size:10px;font-weight:600;letter-spacing:.025em;color:#f6f1de;text-shadow:0 1px 4px #153d35,0 0 8px #153d35}
+.world-city-label{position:absolute;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;color:#f7f1de;font:500 10px Outfit,sans-serif;text-shadow:0 1px 3px #102e32,0 0 5px #102e32}
+.world-city-label::before{content:'';display:inline-block;width:4px;height:4px;margin:0 5px 2px 0;border-radius:50%;background:#f7f1de}
+.world-city-label[hidden]{display:none}
+.globe-city{display:flex;align-items:center;gap:5px;min-height:30px;padding:5px 9px;border:1px solid #f8f4e9;border-radius:999px;background:#194f59;color:#fff;font:700 11px Outfit,sans-serif;box-shadow:0 3px 12px #0b3339a0;text-shadow:none;z-index:2}
+.globe-city[hidden]{display:none}
+.guide-pin-dot{width:var(--guide-dot,8px);height:var(--guide-dot,8px);flex:none;border-radius:50%;background:#e5a779;box-shadow:0 0 0 3px #e5a77950}
+.guide-tray{position:fixed;z-index:5;left:50%;bottom:calc(108px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(510px,calc(100vw - 32px));padding:12px 14px;background:rgba(11,50,56,.92);border:1px solid #87b6a9;border-radius:16px;box-shadow:0 8px 24px #0a292f55;color:#f6f1e7;text-align:left;backdrop-filter:blur(12px)}
+.guide-tray-heading{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:9px}
+.guide-tray-heading strong{font:600 15px Fredoka,sans-serif}.guide-tray-heading span{font-size:10px;color:#bbd6cf}
+.guide-tray-cities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.guide-tray-cities button{min-width:0;padding:8px 9px;border:1px solid #6c9d91;border-radius:9px;background:#215a60;color:#fff;text-align:left;cursor:pointer}
+.guide-tray-cities button:hover,.guide-tray-cities button:focus-visible{background:#397d7a}
+.guide-tray-cities button span,.guide-tray-cities button small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.guide-tray-cities button span{font-size:12px;font-weight:700}.guide-tray-cities button small{margin-top:3px;font-size:10px;color:#c5e0d5}
+#globe-view .globe-controls{bottom:calc(220px + env(safe-area-inset-bottom))}
+#globe-view .map-credit{bottom:calc(91px + env(safe-area-inset-bottom));font-size:9px}
+@media(max-width:480px){.guide-tray{bottom:calc(101px + env(safe-area-inset-bottom));padding:10px}.guide-tray-heading strong{font-size:14px}.guide-tray-cities button{padding:7px}.guide-tray-cities button span{font-size:11px}#globe-view .globe-controls{bottom:calc(206px + env(safe-area-inset-bottom));font-size:11px}}

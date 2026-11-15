@@ -8,7 +8,7 @@ export const places = [
   {id:'bunkers',cityId:'barcelona',name:'Bunkers del Carmel',category:'Viewpoint',tip:'Bring a snack and come before sunset for a view over the whole city.',author:'Maya',votes:24},
   {id:'mercat',cityId:'barcelona',name:'Mercat de Santa Caterina',category:'Food',tip:'A colorful market for a casual lunch between classes.',author:'Leo',votes:18},
   {id:'park-guell',cityId:'barcelona',name:'Park Güell',category:'Outdoors',coordinates:[41.4145,2.1527],tip:'A colorful park with sweeping city views.',author:'Maya',votes:31},
-  {id:'sagrada-familia',cityId:'barcelona',name:'Sagrada Família',category:'Sightseeing',coordinates:[41.4036,2.1744],tip:'A landmark worth seeing up close; check opening hours before visiting.',author:'Demo student',votes:22},
+  {id:'sagrada-familia',cityId:'barcelona',name:'Sagrada Família',category:'Sightseeing',coordinates:[41.4036,2.1744],tip:'Sagrada Família is incredible and absolutely worth a visit. Gaudí’s towering spires and intricate façades make it unlike anywhere else in Barcelona. Go with friends and take time to look at all the details!',author:'Alex',votes:99,comments:[{author:'Maya',text:'The details on the façade are amazing up close.'},{author:'Leo',text:'This is going straight on my Barcelona list!'}, {author:'Sofia',text:'Going with friends makes it even more memorable.'}]},
   {id:'sample-bcn-rooftop',cityId:'barcelona',name:'Sample rooftop club',category:'Nightlife',coordinates:[41.392,2.174],tip:'A fictional late-night spot for trying the nightlife filter.',author:'Demo student',votes:-3},
   {id:'sample-bcn-dance',cityId:'barcelona',name:'Sample dance club',category:'Nightlife',coordinates:[41.38,2.187],tip:'A fictional music and dancing pick for the demo.',author:'Demo student',votes:12},
   {id:'sample-bcn-residence',cityId:'barcelona',name:'Sample student residence',category:'Housing',coordinates:[41.402,2.17],tip:'A fictional shared stay for trying the housing filter.',author:'Demo student',votes:11},
@@ -28,3 +28,4 @@ export const places = [
 ];
 export const students = [{id:'maya',displayName:'Maya',city:'Barcelona',interests:'Coffee runs · Weekend trips'},{id:'leo',displayName:'Leo',city:'Barcelona',interests:'Food · Photography'},{id:'sofia',displayName:'Sofia',city:'Madrid',interests:'Art · Outdoors'}];
 export const initialTrips = [{id:'trip-barcelona',cityId:'barcelona',title:'A weekend in Barcelona',dates:'Your next adventure',placeIds:[],participantIds:[]}];
+

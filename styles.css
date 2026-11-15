@@ -243,6 +243,9 @@ body:has(.roves-page) .demo-note{background:#0e3037;color:#c5dedb}
 .rove-empty{color:#c5dedb}
 @media(max-width:650px){.roves-page{padding:30px 16px 100px}.rove-grid{grid-template-columns:1fr}.rove-form-row{grid-template-columns:1fr;gap:0}.rove-section-head{align-items:flex-start}.rove-tabs{display:flex}.rove-tabs button{flex:1;min-width:0}.rove-plan,.quest-card,.rove-form{padding:20px}}
 .popup-trip-picker{display:block;width:100%;max-width:240px;margin:10px 0 0;padding:8px;border:1px solid #7da89c;border-radius:5px;background:#fff;color:#194f59}
+#city-screen:not([hidden]){opacity:1;transition:opacity .2s ease}
+#city-screen.city-arriving:not([hidden]){opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){#city-screen:not([hidden]){transition:none}}
 
 /* Reserve scrollbar space when the full-screen globe locks page scrolling. */
 html { scrollbar-gutter: stable; }

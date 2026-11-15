@@ -2,13 +2,15 @@ import {students} from './data.js';
 import {readState,readCrew,updateCrew} from './store.js';
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let tab='friends', conversation=null, feedback='';
-export function openTripChat(id){tab='messages';conversation=id}
+let tab='friends', conversation=null, profile=null, feedback='';
+export function openTripChat(id){tab='messages';conversation=id;profile=null}
+export function openStudentProfile(id){profile=students.find(s=>s.id===id)?.id||null;conversation=null;tab='friends'}
 const person = id => students.find(s => s.id===id);
 const avatar = (name, id='') => `<span class="crew-avatar crew-avatar-${esc(id)}" aria-hidden="true">${esc(name.charAt(0))}</span>`;
 const conversations = () => [...readCrew().friends.map(person).filter(Boolean).map(s=>({id:s.id,title:s.displayName,subtitle:`${s.city} · Sample student`})),...readState().trips.map(t=>({id:t.id,title:t.title,subtitle:'Sample trip group',trip:true}))];
 function content(){
   const c=readCrew();
+  if(profile){const s=person(profile);return `<div class="crew-list-head"><button class="crew-back" data-crew-action="close-profile" aria-label="Back to connections">←</button><h2>Sample profile</h2></div><div class="crew-row">${avatar(s.displayName,s.id)}<span class="crew-row-copy"><strong>${esc(s.displayName)}</strong><small>${esc(s.city)} · ${esc(s.interests)}</small></span></div><p class="crew-footnote">Fictional student · This profile is part of the demo.</p>${c.friends.includes(s.id)?`<button class="crew-action" data-crew-action="message" data-id="${esc(s.id)}">Open demo conversation</button>`:''}`}
   if(tab==='messages' && conversation){
     const entry=conversations().find(x=>x.id===conversation);
     if(!entry){conversation=null;return content()}
@@ -25,9 +27,10 @@ export function renderCrew(root){
 }
 export function handleCrewClick(event,root){
   const target=event.target.closest('[data-crew-tab],[data-crew-action]');if(!target||!root.contains(target))return;
-  if(target.dataset.crewTab){tab=target.dataset.crewTab;conversation=null}
+  if(target.dataset.crewTab){tab=target.dataset.crewTab;conversation=null;profile=null}
   const id=target.dataset.id, action=target.dataset.crewAction;
-  if(action==='open'||action==='message'){conversation=id;tab='messages'}
+  if(action==='open'||action==='message'){conversation=id;profile=null;tab='messages'}
+  if(action==='close-profile'){profile=null;history.replaceState(null,'','#crew')}
   if(action==='back')conversation=null;
   if(action==='accept'){const ok=updateCrew(c=>{c.requests=c.requests.filter(x=>x!==id);if(!c.friends.includes(id))c.friends.push(id)});feedback=ok?'Connection added. You can now add them to a trip in Roves.':'Saved for this session only.'}
   if(action==='connect'){const ok=updateCrew(c=>{if(!c.sent.includes(id))c.sent.push(id)});feedback=ok?'Request saved in this demo; no request was sent.':'Saved for this session only; no request was sent.'}

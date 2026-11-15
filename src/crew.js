@@ -2,7 +2,7 @@ import {students} from './data.js';
 import {readState,readCrew,updateCrew} from './store.js';
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let tab='messages', conversation=null, feedback='';
+let tab='friends', conversation=null, feedback='';
 export function openTripChat(id){tab='messages';conversation=id}
 const person = id => students.find(s => s.id===id);
 const avatar = (name, id='') => `<span class="crew-avatar crew-avatar-${esc(id)}" aria-hidden="true">${esc(name.charAt(0))}</span>`;
@@ -13,7 +13,7 @@ function content(){
     const entry=conversations().find(x=>x.id===conversation);
     if(!entry){conversation=null;return content()}
     const messages=c.messages[entry.id]||[];
-    return `<div class="chat-header"><button class="crew-back" data-crew-action="back" aria-label="Back to messages">←</button>${avatar(entry.title,entry.id)}<div><strong>${esc(entry.title)}</strong><small>${esc(entry.subtitle)}</small></div>${entry.trip?'<a href="#roves">View Rove ↗</a>':''}</div><div class="chat-messages" aria-label="Conversation"><p class="chat-caption">SAMPLE CONVERSATION · ONLY ON THIS DEVICE</p>${messages.map(m=>`<div class="chat-bubble ${m.from==='you'?'mine':''}">${esc(m.text)}</div>`).join('')}</div><form class="chat-compose" id="crew-compose"><label class="sr-only" for="crew-message">Write a message</label><input id="crew-message" name="message" maxlength="500" placeholder="Write a message…" autocomplete="off" required><button type="submit">Send</button></form><p class="crew-footnote">Demo only: messages are not sent to other people.</p>`;
+    return `<div class="chat-header"><button class="crew-back" data-crew-action="back" aria-label="Back to messages">←</button>${avatar(entry.title,entry.id)}<div><strong>${esc(entry.title)}</strong><small>${esc(entry.subtitle)}</small></div>${entry.trip?`<a href="#roves/${esc(entry.id)}">View trip ↗</a>`:''}</div><div class="chat-messages" aria-label="Conversation"><p class="chat-caption">SAMPLE CONVERSATION · ONLY ON THIS DEVICE</p>${messages.map(m=>`<div class="chat-bubble ${m.from==='you'?'mine':''}">${esc(m.text)}</div>`).join('')}</div><form class="chat-compose" id="crew-compose"><label class="sr-only" for="crew-message">Write a message</label><input id="crew-message" name="message" maxlength="500" placeholder="Write a message…" autocomplete="off" required><button type="submit">Send</button></form><p class="crew-footnote">Demo only: messages are not sent to other people.</p>`;
   }
   if(tab==='messages') return `<div class="crew-list-head"><h2>Messages</h2><span>Sample inbox</span></div><div class="crew-list">${conversations().map(entry=>{const msgs=c.messages[entry.id]||[];const last=msgs.at(-1);return `<button class="crew-row" data-crew-action="open" data-id="${esc(entry.id)}">${avatar(entry.title,entry.id)}<span class="crew-row-copy"><strong>${esc(entry.title)}</strong><small>${esc(last?.text||entry.subtitle)}</small></span><span class="crew-arrow">›</span></button>`}).join('')}</div><p class="crew-footnote">Your conversations and trip chats will appear here.</p>`;
   if(tab==='friends') return `<div class="crew-list-head"><h2>Connections</h2><span>${c.friends.length} friends</span></div>${c.requests.length?`<div class="crew-section-label">FRIEND REQUESTS</div>${c.requests.map(id=>{const s=person(id);return s?`<div class="crew-row">${avatar(s.displayName,s.id)}<span class="crew-row-copy"><strong>${esc(s.displayName)}</strong><small>${esc(s.city)} · Sample student</small></span><button class="crew-action" data-crew-action="accept" data-id="${esc(s.id)}">Accept</button></div>`:''}).join('')}`:''}<div class="crew-section-label">YOUR FRIENDS</div>${c.friends.length?c.friends.map(id=>{const s=person(id);return s?`<div class="crew-row">${avatar(s.displayName,s.id)}<span class="crew-row-copy"><strong>${esc(s.displayName)}</strong><small>${esc(s.city)} · ${esc(s.interests)}</small></span><button class="crew-action secondary" data-crew-action="message" data-id="${esc(s.id)}">Message</button></div>`:''}).join(''):'<p class="crew-empty">No connections yet. Find students in Discover.</p>'}`;
@@ -29,7 +29,7 @@ export function handleCrewClick(event,root){
   const id=target.dataset.id, action=target.dataset.crewAction;
   if(action==='open'||action==='message'){conversation=id;tab='messages'}
   if(action==='back')conversation=null;
-  if(action==='accept'){const ok=updateCrew(c=>{c.requests=c.requests.filter(x=>x!==id);if(!c.friends.includes(id))c.friends.push(id)});feedback=ok?'Connection added in this demo.':'Saved for this session only.'}
+  if(action==='accept'){const ok=updateCrew(c=>{c.requests=c.requests.filter(x=>x!==id);if(!c.friends.includes(id))c.friends.push(id)});feedback=ok?'Connection added. You can now add them to a trip in Roves.':'Saved for this session only.'}
   if(action==='connect'){const ok=updateCrew(c=>{if(!c.sent.includes(id))c.sent.push(id)});feedback=ok?'Request saved in this demo; no request was sent.':'Saved for this session only; no request was sent.'}
   renderCrew(root);
 }

@@ -1,5 +1,3 @@
-import {suggestCities} from './city-suggestions.js';
-import {readState} from './store.js';
 const coords={barcelona:[2.1686,41.3874],madrid:[-3.7038,40.4168],lisbon:[-9.1393,38.7223]};
 const COUNTRY_ZOOM=3, CITY_ZOOM=12, AUTO_CITY_ZOOM=25, MAX_ZOOM=256;
 
@@ -87,16 +85,6 @@ export function mountGlobe(cities,onSelect,places=[]){
  fetch('./vendor/world-cities.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(items=>{
   worldLabels=items.sort((a,b)=>(b.population-a.population)||(a.rank-b.rank)).map(item=>{const element=document.createElement('span');element.className='world-city-label';element.textContent=item.name;element.hidden=true;labels.append(element);return {element,point:item.point,rank:item.rank}});draw();
  }).catch(()=>{});
- const guideToggle=document.querySelector('.guide-toggle'),guidePanel=document.querySelector('#guide-suggestions'),globeView=document.querySelector('#globe-view');
- function refreshGuides(){
-  const ideas=suggestCities(cities,places,readState()),list=guidePanel.querySelector('.guide-tray-cities');
-  guidePanel.querySelector('.guide-tray-heading span').textContent=ideas.some(item=>item.score>0)?'Based on your saved activity':'Popular in our sample guides';
-  list.replaceChildren(...ideas.map(({city,reason})=>{const button=document.createElement('button'),title=document.createElement('span'),country=document.createElement('small'),why=document.createElement('span');button.type='button';button.dataset.guide=city.id;title.append(document.createTextNode(city.name));country.textContent=city.country;title.append(country);why.className='guide-reason';why.textContent=reason;button.append(title,why);return button}));
- }
- function setGuidesOpen(open){if(open)refreshGuides();guidePanel.hidden=!open;guideToggle.setAttribute('aria-expanded',String(open));globeView.classList.toggle('suggestions-open',open);queueDraw()}
- guideToggle.addEventListener('click',()=>setGuidesOpen(guidePanel.hidden));
- guidePanel.addEventListener('keydown',e=>{if(e.key==='Escape'){setGuidesOpen(false);guideToggle.focus()}});
- guidePanel.addEventListener('click',e=>{const button=e.target.closest('[data-guide]');if(button){setGuidesOpen(false);select(cities.find(c=>c.id===button.dataset.guide))}});
  if(typeof ResizeObserver!=='undefined'){const observer=new ResizeObserver(()=>{if(stage.isConnected)queueDraw();else observer.disconnect()});observer.observe(canvas)}
  fetch('./vendor/world-countries-50m.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{detailedWorld=data;draw()}).catch(()=>{});
  canvas.addEventListener('pointerdown',e=>{cancelAnimationFrame(frame);beginMotion();clearTimeout(settleTimer);clearTimeout(cityTimer);focusPending=null;pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.setPointerCapture(e.pointerId);if(pointers.size===1)drag={x:e.clientX,y:e.clientY,rotation:[...rotation],zoom};if(pointers.size===2){let p=[...pointers.values()];pinch={distance:Math.max(1,Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1])),zoom,point:center(),rotation:[...rotation],midpoint:[(p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2]};drag=null}});
@@ -105,7 +93,7 @@ export function mountGlobe(cities,onSelect,places=[]){
  canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',e=>{pointers.delete(e.pointerId);drag=null;pinch=null;endMotion()});
  stage.addEventListener('wheel',e=>{if(e.target.closest('.find-wrap'))return;e.preventDefault();cancelAnimationFrame(frame);beginMotion();const rect=canvas.getBoundingClientRect(),point=[(e.clientX-rect.left)*700/rect.width,(e.clientY-rect.top)*700/rect.height],before=projection.invert(point),oldZoom=zoom,delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?rect.height:1);zoom=clampZoom(zoom*Math.exp(-Math.max(-120,Math.min(120,delta))*zoomSensitivity(zoom)));projection.scale(322*zoom);const after=projection.invert(point);if(before&&after){rotation[0]+=((after[0]-before[0]+540)%360)-180;rotation[1]=Math.max(-89,Math.min(89,rotation[1]+after[1]-before[1]))}queueDraw();endMotion();if(oldZoom<COUNTRY_ZOOM&&zoom>=COUNTRY_ZOOM)scheduleCountryFocus(before||center());if(delta<0)scheduleCity(before||center());else clearTimeout(cityTimer)},{passive:false});
  const search=document.querySelector('#find-city'),options=[...chooser.querySelectorAll('[data-city]')],empty=chooser.querySelector('.city-search-empty');
- function updateSearch(){const q=search.value.trim().toLocaleLowerCase();let count=0;options.forEach(b=>{const show=!q||b.textContent.toLocaleLowerCase().includes(q);b.hidden=!show;if(show)count++});empty.hidden=count>0;chooser.hidden=false;search.setAttribute('aria-expanded','true')}
+ function updateSearch(){const q=search.value.trim().toLocaleLowerCase(),heading=chooser.querySelector('.city-suggestions-heading');heading.hidden=Boolean(q);chooser.classList.toggle('is-searching',Boolean(q));let count=0;options.forEach(b=>{const show=!q||(b.dataset.search||'').toLocaleLowerCase().includes(q);b.hidden=!show;if(show)count++});empty.hidden=count>0;chooser.hidden=false;search.setAttribute('aria-expanded','true')}
  function closeSearch(){chooser.hidden=true;search.setAttribute('aria-expanded','false')}
  search.addEventListener('focus',()=>{updateSearch()});search.addEventListener('input',updateSearch);
  search.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();search.blur()}else if(e.key==='ArrowDown'){e.preventDefault();if(chooser.hidden)updateSearch();options.find(b=>!b.hidden)?.focus()}else if(e.key==='Enter'){const first=options.find(b=>!b.hidden);if(first){e.preventDefault();first.click()}}});

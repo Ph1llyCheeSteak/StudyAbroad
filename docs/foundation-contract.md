@@ -37,3 +37,7 @@ Crew opens on connections; accepting a fictional request makes that student sele
 Saved board posts link to `#roves/new/:encodedPostId`, opening a new plan with its city and saved post selected. This only prepares a local draft; the user must create the plan. Participant chips link to `#crew/profile/:studentId`, a fictional student preview. No real profile, invitation or message is created.
 
 Saved user-created post snapshots update when their title changes. If the source post is deleted during the tab session, existing trip entries remain visible and are labeled removed rather than linking to a missing post. Source posts are still session-scoped; snapshots and plans use browser storage.
+
+## Demo reset (2026-11-15)
+
+Reloading an app page clears the prototype trip, saved-post and session-post data and returns to Explore. Ordinary navigation between pages retains that data for the current demonstration. This affects only Rove demo storage, not other browser data.

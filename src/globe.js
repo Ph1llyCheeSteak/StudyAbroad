@@ -1,3 +1,5 @@
+import {suggestCities} from './city-suggestions.js';
+import {readState} from './store.js';
 const coords={barcelona:[2.1686,41.3874],madrid:[-3.7038,40.4168],lisbon:[-9.1393,38.7223]};
 const COUNTRY_ZOOM=3, CITY_ZOOM=12, AUTO_CITY_ZOOM=25, MAX_ZOOM=256;
 
@@ -85,7 +87,17 @@ export function mountGlobe(cities,onSelect,places=[]){
  fetch('./vendor/world-cities.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(items=>{
   worldLabels=items.sort((a,b)=>(b.population-a.population)||(a.rank-b.rank)).map(item=>{const element=document.createElement('span');element.className='world-city-label';element.textContent=item.name;element.hidden=true;labels.append(element);return {element,point:item.point,rank:item.rank}});draw();
  }).catch(()=>{});
- document.querySelectorAll('[data-guide]').forEach(button=>button.addEventListener('click',()=>select(cities.find(c=>c.id===button.dataset.guide))));
+ const guideToggle=document.querySelector('.guide-toggle'),guidePanel=document.querySelector('#guide-suggestions'),globeView=document.querySelector('#globe-view');
+ function refreshGuides(){
+  const ideas=suggestCities(cities,places,readState()),list=guidePanel.querySelector('.guide-tray-cities');
+  guidePanel.querySelector('.guide-tray-heading span').textContent=ideas.some(item=>item.score>0)?'Based on your saved activity':'Popular in our sample guides';
+  list.replaceChildren(...ideas.map(({city,reason})=>{const button=document.createElement('button'),title=document.createElement('span'),country=document.createElement('small'),why=document.createElement('span');button.type='button';button.dataset.guide=city.id;title.append(document.createTextNode(city.name));country.textContent=city.country;title.append(country);why.className='guide-reason';why.textContent=reason;button.append(title,why);return button}));
+ }
+ function setGuidesOpen(open){if(open)refreshGuides();guidePanel.hidden=!open;guideToggle.setAttribute('aria-expanded',String(open));globeView.classList.toggle('suggestions-open',open);queueDraw()}
+ guideToggle.addEventListener('click',()=>setGuidesOpen(guidePanel.hidden));
+ guidePanel.addEventListener('keydown',e=>{if(e.key==='Escape'){setGuidesOpen(false);guideToggle.focus()}});
+ guidePanel.addEventListener('click',e=>{const button=e.target.closest('[data-guide]');if(button){setGuidesOpen(false);select(cities.find(c=>c.id===button.dataset.guide))}});
+ if(typeof ResizeObserver!=='undefined'){const observer=new ResizeObserver(()=>{if(stage.isConnected)queueDraw();else observer.disconnect()});observer.observe(canvas)}
  fetch('./vendor/world-countries-50m.geojson').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{detailedWorld=data;draw()}).catch(()=>{});
  canvas.addEventListener('pointerdown',e=>{cancelAnimationFrame(frame);beginMotion();clearTimeout(settleTimer);clearTimeout(cityTimer);focusPending=null;pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.setPointerCapture(e.pointerId);if(pointers.size===1)drag={x:e.clientX,y:e.clientY,rotation:[...rotation],zoom};if(pointers.size===2){let p=[...pointers.values()];pinch={distance:Math.max(1,Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1])),zoom,point:center(),rotation:[...rotation],midpoint:[(p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2]};drag=null}});
  canvas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2&&pinch){let p=[...pointers.values()],d=Math.max(1,Math.hypot(p[0][0]-p[1][0],p[0][1]-p[1][1])),midpoint=[(p[0][0]+p[1][0])/2,(p[0][1]+p[1][1])/2];zoom=clampZoom(pinch.zoom*Math.pow(d/pinch.distance,1/(1+.28*Math.log2(pinch.zoom))));rotation=dragRotation(pinch.rotation,midpoint[0]-pinch.midpoint[0],midpoint[1]-pinch.midpoint[1],zoom);queueDraw()}else if(drag){rotation=dragRotation(drag.rotation,e.clientX-drag.x,e.clientY-drag.y,drag.zoom);queueDraw()}});

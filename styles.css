@@ -331,3 +331,5 @@ html { scrollbar-gutter: stable; }
 
 /* Bring the people and saved idea forward on each trip. */
 .rove-people .trip-person-list{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0}.trip-person{display:inline-flex;align-items:center;gap:7px;padding:5px 10px 5px 5px;border:1px solid #62948a;border-radius:999px;background:#215b60;color:#f3e9dc;font-size:12px;font-weight:700}.trip-person>span{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#d5e7d8;color:#194f59;font-size:11px}.rove-saved>a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;margin-top:8px;border-radius:8px;background:#245e61;text-decoration:none;line-height:1.35}.rove-saved>a:hover{background:#34766f}
+
+.trip-person{text-decoration:none}.trip-person:hover,.trip-person:focus-visible{background:#34766f;outline-offset:2px}

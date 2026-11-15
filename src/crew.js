@@ -27,9 +27,9 @@ export function renderCrew(root){
 }
 export function handleCrewClick(event,root){
   const target=event.target.closest('[data-crew-tab],[data-crew-action]');if(!target||!root.contains(target))return;
-  if(target.dataset.crewTab){tab=target.dataset.crewTab;conversation=null;profile=null}
+  if(target.dataset.crewTab){tab=target.dataset.crewTab;conversation=null;profile=null;if(location.hash.startsWith('#crew/profile/'))history.replaceState(null,'','#crew')}
   const id=target.dataset.id, action=target.dataset.crewAction;
-  if(action==='open'||action==='message'){conversation=id;profile=null;tab='messages'}
+  if(action==='open'||action==='message'){conversation=id;profile=null;tab='messages';if(location.hash.startsWith('#crew/profile/'))history.replaceState(null,'','#crew')}
   if(action==='close-profile'){profile=null;history.replaceState(null,'','#crew')}
   if(action==='back')conversation=null;
   if(action==='accept'){const ok=updateCrew(c=>{c.requests=c.requests.filter(x=>x!==id);if(!c.friends.includes(id))c.friends.push(id)});feedback=ok?'Connection added. You can now add them to a trip in Roves.':'Saved for this session only.'}

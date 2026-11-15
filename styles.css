@@ -272,11 +272,9 @@ html { scrollbar-gutter: stable; }
 .globe-city{display:flex;align-items:center;gap:5px;min-height:30px;padding:5px 9px;border:1px solid #f8f4e9;border-radius:999px;background:#194f59;color:#fff;font:700 11px Outfit,sans-serif;box-shadow:0 3px 12px #0b3339a0;text-shadow:none;z-index:2}
 .globe-city[hidden]{display:none}
 .guide-pin-dot{width:var(--guide-dot,8px);height:var(--guide-dot,8px);flex:none;border-radius:50%;background:#e5a779;box-shadow:0 0 0 3px #e5a77950}
-.city-suggestions-heading{display:flex;flex-direction:column;gap:3px;padding:10px 12px 8px;color:#194f59}
+.city-suggestions-heading{padding:8px 12px 4px;color:#526c64;font-size:11px;font-weight:700;letter-spacing:.02em}
 .city-chooser{max-height:min(320px,calc(100dvh - 160px))}
 #globe-view:has(.find-wrap:focus-within) .globe-heading{visibility:hidden}
-.city-suggestions-heading strong{font:600 15px Fredoka,sans-serif}
-.city-suggestions-heading span{font-size:11px;color:#526c64}
 .city-suggestions-heading[hidden]{display:none}
 .city-chooser button span,.city-chooser button small{display:block}
 .city-chooser button small{margin-top:3px;color:#526c64;font-size:11px;font-weight:400}

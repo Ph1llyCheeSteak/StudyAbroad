@@ -25,6 +25,7 @@ export function mountGlobe(cities,onSelect,places=[]){
  function endMotion(){clearTimeout(detailTimer);detailTimer=setTimeout(()=>{moving=false;queueDraw()},180)}
  function queueDraw(){if(renderFrame)return;renderFrame=requestAnimationFrame(()=>{renderFrame=0;draw()})}
  function draw(){
+  if(!stage.isConnected)return;
   projection.rotate(rotation).scale(322*zoom);ctx.clearRect(0,0,700,700);stage.classList.toggle('is-zoomed',zoom>1.03);document.querySelector('#globe-view').classList.toggle('globe-at-rest',zoom<=1.001);
   ctx.beginPath();path({type:'Sphere'});const ocean=ctx.createRadialGradient(250,210,20,350,350,500);ocean.addColorStop(0,'#4a9bac');ocean.addColorStop(.65,'#28798d');ocean.addColorStop(1,'#125164');ctx.fillStyle=ocean;ctx.fill();
   ctx.beginPath();path(graticule);ctx.strokeStyle='rgba(169,211,211,.20)';ctx.lineWidth=.7;ctx.stroke();
@@ -54,7 +55,7 @@ export function mountGlobe(cities,onSelect,places=[]){
  }
  function animate(point,targetZoom,done){
   cancelAnimationFrame(frame);beginMotion();let start=[...rotation],target=[-point[0],-point[1],0],delta=((target[0]-start[0]+540)%360)-180,startZoom=zoom,t0=performance.now();
-  function step(now){let t=Math.min(1,(now-t0)/650),e=t*t*(3-2*t);rotation=[start[0]+delta*e,start[1]+(target[1]-start[1])*e,0];zoom=startZoom+(targetZoom-startZoom)*e;draw();if(t<1)frame=requestAnimationFrame(step);else{endMotion();if(done)done()}}
+  function step(now){if(!stage.isConnected)return;let t=Math.min(1,(now-t0)/650),e=t*t*(3-2*t);rotation=[start[0]+delta*e,start[1]+(target[1]-start[1])*e,0];zoom=startZoom+(targetZoom-startZoom)*e;draw();if(t<1)frame=requestAnimationFrame(step);else{endMotion();if(done)done()}}
   frame=requestAnimationFrame(step);
  }
  function select(c){if(!c||!coords[c.id])return;clearTimeout(settleTimer);clearTimeout(cityTimer);focusPending=null;chooser.hidden=true;document.querySelector('#find-city').setAttribute('aria-expanded','false');status.textContent='Opening '+c.name+'…';animate(coords[c.id],Math.max(zoom,14),()=>{cityOpen=true;onSelect(c)})}

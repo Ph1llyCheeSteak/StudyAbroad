@@ -317,3 +317,8 @@ html { scrollbar-gutter: stable; }
 .city-chooser.is-searching button small{display:none}
 #globe-view .globe-controls{bottom:calc(95px + env(safe-area-inset-bottom))}
 #globe-view .map-credit{bottom:calc(75px + env(safe-area-inset-bottom))}
+
+/* Keep filter selections on the checkbox, not a surrounding tile. */
+#place-filters.filter-menu label,#place-filters.filter-menu label:has(input:checked){width:auto;height:auto;border:0;border-radius:0;background:transparent;color:#194f59}
+#place-filters.filter-menu label:focus-within{outline:none}
+#place-filters.filter-menu input:focus-visible{outline:2px solid #398ba1;outline-offset:2px}

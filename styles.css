@@ -333,3 +333,25 @@ html { scrollbar-gutter: stable; }
 .rove-people .trip-person-list{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0}.trip-person{display:inline-flex;align-items:center;gap:7px;padding:5px 10px 5px 5px;border:1px solid #62948a;border-radius:999px;background:#215b60;color:#f3e9dc;font-size:12px;font-weight:700}.trip-person>span{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#d5e7d8;color:#194f59;font-size:11px}.rove-saved>a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;margin-top:8px;border-radius:8px;background:#245e61;text-decoration:none;line-height:1.35}.rove-saved>a:hover{background:#34766f}
 
 .trip-person{text-decoration:none}.trip-person:hover,.trip-person:focus-visible{background:#34766f;outline-offset:2px}
+.popup-board{display:inline-grid;place-items:center;width:38px;height:38px;border:1px solid #7da89c;border-radius:6px;background:#47745e;color:#fff}
+.leaflet-container a.popup-board{color:#fff}
+.popup-board svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.popup-board:focus-visible,.saved-rove-actions a:focus-visible,.saved-rove-remove:focus-visible{outline:3px solid #a96f4d;outline-offset:2px}
+.saved-rove-card{margin-top:12px;padding:14px;border:1px solid #71968b;border-radius:12px;background:#123b43}
+.saved-rove-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.saved-rove-header strong,.saved-rove-header small{display:block}
+.saved-rove-header strong{color:#f3e9dc;font-size:14px}
+.saved-rove-header small{margin-top:4px;color:#c5dedb;font-size:11px}
+.saved-rove-remove{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;padding:0;border:0;border-radius:7px;background:transparent;color:#d2e4dc;font-size:23px;line-height:1}
+.saved-rove-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.saved-rove-actions a,.saved-rove-actions button{display:flex;align-items:center;justify-content:center;min-height:42px;padding:9px 10px;border:1px solid #86aea4;border-radius:8px;background:transparent;color:#f3e9dc;font-family:inherit;font-size:12px;font-weight:600;text-align:center}
+.saved-rove-actions a:last-child{border-color:#a96f4d;background:#a96f4d;color:#fff}
+.saved-rove-actions button:disabled{opacity:.5}
+.ideas-heading{margin:28px 0 14px;color:#f3e9dc;font:600 19px Fredoka,sans-serif}
+.idea-card{display:flex;flex-direction:column;gap:12px;padding:22px;border:1px solid #47745e;border-radius:14px;background:#194f59;color:#f3e9dc;box-shadow:0 8px 24px #08272d38}
+.idea-card h3{margin:0;color:#fff;font:600 23px Fredoka,sans-serif}
+.idea-card p{margin:0;color:#c5dedb;line-height:1.5;font-size:14px}
+.idea-card .quest-time,.idea-card .quest-stops{margin:0}
+.idea-card .quest-stops a{color:#f3e9dc}
+.idea-card .rove-secondary{align-self:flex-start;margin-top:auto}
+

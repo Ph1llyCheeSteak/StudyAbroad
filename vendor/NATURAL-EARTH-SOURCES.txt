@@ -1,0 +1,6 @@
+Natural Earth map data
+
+world-cities.json is derived from Natural Earth 1:110m populated places (version 5.1.2). It contains geographic labels, not evidence that Rove has a city guide or student activity there.
+world-countries-50m.geojson is derived from Natural Earth 1:50m admin-0 countries, with properties removed.
+Source: https://github.com/nvkelso/natural-earth-vector
+Natural Earth data is public domain: https://www.naturalearthdata.com/about/terms-of-use/

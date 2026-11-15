@@ -17,3 +17,9 @@ The palette uses Maggie's approved color study; remaining branding is provisiona
 ## Roves planning prototype (2026-11-14)
 
 Planning and sample quests use the existing browser-local trip records and stable city/place IDs. `createTrip({cityId, title, dates, placeIds})` returns `{id, saved}`; `addTripParticipant(tripId, studentId)` adds a sample friend locally and returns whether persistence succeeded. No invitation, booking, or notification is sent. The city pin popup lets users choose among plans in that city when saving a place. Quest ideas are fictional suggestions, not claims that real students took those trips. Coordinate changes to these shared functions and trip fields in integration reviews.
+
+## Trip-sharing and program-view concept (2026-11-14)
+
+`#provider` is an illustrative program view accessible from the account menu. Its fixed example engagement counts are fictional and are not derived from real users or connected to analytics. It links to the shared `barcelona-afternoon` sample quest at `#roves/quests`; students can use that existing quest to create a local trip. This is not an operating provider portal.
+
+Each Roves plan offers a `Share trip` dialog that reads that plan's existing city, dates, place IDs and participant IDs from `rove-demo-v1`. It previews separately selected fields for a trusted contact or program. The choices are temporary; nothing is sent, registered, or stored by the dialog. No messages or live location are included. This is a design concept, not a registration integration, emergency service, safety guarantee, or account/permission system. Existing browser-local planning and quest data remain unchanged.
